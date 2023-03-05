@@ -1,0 +1,17 @@
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\bin\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.deps.json
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\bin\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.runtimeconfig.json
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\bin\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.dll
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\bin\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.pdb
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\bin\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.dll
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\bin\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.pdb
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.csproj.AssemblyReference.cache
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.GeneratedMSBuildEditorConfig.editorconfig
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.AssemblyInfoInputs.cache
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.AssemblyInfo.cs
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.csproj.CoreCompileInputs.cache
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.csproj.CopyComplete
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.dll
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\refint\UrzisoftCarflowBackendApp.UseCases.dll
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.pdb
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\UrzisoftCarflowBackendApp.UseCases.genruntimeconfig.cache
+E:\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp\UrzisoftCarflowBackendApp.UseCases\obj\Debug\net6.0\ref\UrzisoftCarflowBackendApp.UseCases.dll
