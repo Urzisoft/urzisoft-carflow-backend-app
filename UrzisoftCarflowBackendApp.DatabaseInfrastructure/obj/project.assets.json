@@ -3776,11 +3776,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj",
+      "projectUniqueName": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj",
       "projectName": "UrzisoftCarflowBackendApp.DatabaseInfrastructure",
-      "projectPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj",
+      "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj",
       "packagesPath": "C:\\Users\\cigan\\.nuget\\packages\\",
-      "outputPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\obj\\",
+      "outputPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3802,11 +3802,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj": {
-              "projectPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj"
+            "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj": {
+              "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj"
             },
-            "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj": {
-              "projectPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj"
+            "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj": {
+              "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj"
             }
           }
         }

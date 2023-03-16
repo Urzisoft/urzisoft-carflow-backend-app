@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cnKRvZeUmXD5ed1PMcBlf+YX2pf00e0Ui+lPcJIKkaPLiC4Bgyanr6m5twutkBG6+IvINiFaLTR1LbTBYzZn4g==",
+  "dgSpecHash": "y2hn11CZoBPvn7i+cpnn7Nusofw8m5AvRT0S3ytaG4noV8fb3E1oFkayK08PB/4/xYscby83NLeYMxVQ3Tmlxg==",
   "success": true,
-  "projectFilePath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj",
+  "projectFilePath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cigan\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\cigan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

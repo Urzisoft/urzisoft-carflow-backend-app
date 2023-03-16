@@ -4020,11 +4020,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Presenters\\UrzisoftCarflowBackendApp.Presenters.csproj",
+      "projectUniqueName": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Presenters\\UrzisoftCarflowBackendApp.Presenters.csproj",
       "projectName": "UrzisoftCarflowBackendApp.Presenters",
-      "projectPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Presenters\\UrzisoftCarflowBackendApp.Presenters.csproj",
+      "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Presenters\\UrzisoftCarflowBackendApp.Presenters.csproj",
       "packagesPath": "C:\\Users\\cigan\\.nuget\\packages\\",
-      "outputPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Presenters\\obj\\",
+      "outputPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Presenters\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4046,8 +4046,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj": {
-              "projectPath": "E:\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj"
+            "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj": {
+              "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\UrzisoftCarflowBackendApp.DatabaseInfrastructure.csproj"
             }
           }
         }

@@ -5,7 +5,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.Commands
 {
     public class CreateCar : IRequest<Car>
     {
-        public string Brand { get; set; }
-        public string Model { get; set; }
+        public Brand Brand { get; set; }
+        public Model Model { get; set; }
     }
 }

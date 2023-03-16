@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 {
     public class CarDto
     {
         [Required]
-        [MinLength (3)]
-        public string Brand { get; set; }
+        public Brand Brand { get; set; }
 
         [Required]
-        [MinLength (3)]
-        public string Model { get; set; }
+        public Model Model { get; set; }
     }
 }
