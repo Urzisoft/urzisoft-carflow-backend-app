@@ -5,18 +5,18 @@ using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Cars.QueryHandlers
 {
-    public class GetAllCarsHandler : IRequestHandler<GetAllCars, List<Car>>
+    public class GetCarByIdHandler : IRequestHandler<GetCarById, Car>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GetAllCarsHandler(IUnitOfWork unitOfWork)
+        public GetCarByIdHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<List<Car>> Handle(GetAllCars request, CancellationToken cancellationToken)
+        public async Task<Car> Handle(GetCarById request, CancellationToken cancellationToken)
         {
-            return await _unitOfWork.CarRepository.GetAll();
+            return await _unitOfWork.CarRepository.GetById(request.Id);
         }
     }
 }

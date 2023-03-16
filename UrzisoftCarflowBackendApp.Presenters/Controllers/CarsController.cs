@@ -28,6 +28,20 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("{carId}")]
+        public async Task<IActionResult> GetCarById(int carId)
+        {
+            var query = new GetCarById
+            {
+                Id = carId
+            };
+
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateCarEndpoint([FromBody] CarDto carDto)
         {
@@ -43,6 +57,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
+
             };
 
             var result = await _mediator.Send(command);
