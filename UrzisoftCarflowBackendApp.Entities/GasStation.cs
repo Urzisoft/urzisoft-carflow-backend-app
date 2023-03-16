@@ -1,6 +1,6 @@
 ﻿namespace UrzisoftCarflowBackendApp.Entities
 {
-    public class GasStations
+    public class GasStation
     {
         public int Id { get; set; }
         public string Name { get; set; }
