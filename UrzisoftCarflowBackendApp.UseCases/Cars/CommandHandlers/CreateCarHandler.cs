@@ -5,7 +5,7 @@ using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
 {
-    internal class CreateCarHandler : IRequestHandler<CreateCar, Car>
+    public class CreateCarHandler : IRequestHandler<CreateCar, Car>
     {
 
         private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +20,16 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             var car = new Car
             {
                 Model = request.Model,
-                Brand = request.Brand
+                Brand = request.Brand,
+                Generation = request.Generation,
+                Year = request.Year,
+                GasType = request.GasType,
+                Mileage = request.Mileage, 
+                Gearbox = request.Gearbox,
+                Power = request.Power,
+                EngineSize = request.EngineSize,
+                DriveWheel = request.DriveWheel,
+                LicensePlate = request.LicensePlate,
             };
 
             await _unitOfWork.CarRepository.Create(car);

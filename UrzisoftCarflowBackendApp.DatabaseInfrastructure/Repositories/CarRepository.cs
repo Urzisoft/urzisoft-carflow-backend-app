@@ -29,5 +29,10 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+
+        Task<Car> ICarRepository.Delete(Car obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
