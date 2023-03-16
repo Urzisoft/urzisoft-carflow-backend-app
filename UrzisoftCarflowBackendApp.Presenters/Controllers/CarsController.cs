@@ -34,7 +34,15 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new CreateCar
             {
                 Brand = carDto.Brand,
-                Model = carDto.Model
+                Model = carDto.Model,
+                Generation = carDto.Generation,
+                Year = carDto.Year,
+                GasType = carDto.GasType,
+                Mileage = carDto.Mileage,
+                Gearbox = carDto.Gearbox,
+                EngineSize = carDto.EngineSize,
+                DriveWheel = carDto.DriveWheel,
+                LicensePlate = carDto.LicensePlate,
             };
 
             var result = await _mediator.Send(command);

@@ -16,7 +16,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 
         [Required]
         [StringLength(4)]
-        public string Year { get; set; }
+        public int Year { get; set; }
 
         [Required]
         public string GasType { get; set; }
