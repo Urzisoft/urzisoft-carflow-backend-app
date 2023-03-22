@@ -15,7 +15,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
         public string Generation { get; set; }
 
         [Required]
-        [StringLength(4)]
         public int Year { get; set; }
 
         [Required]
@@ -27,15 +26,14 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
         public string Mileage { get; set; }
         
         public string Gearbox { get; set; }
+        public int Power { get; set; }
 
-        [MaxLength(4)]
         public int EngineSize { get; set; }
 
         [Required]
         public string DriveWheel { get; set; }
 
         [Required]
-        [StringLength(7)]
         public string LicensePlate { get; set; }
     }
 }

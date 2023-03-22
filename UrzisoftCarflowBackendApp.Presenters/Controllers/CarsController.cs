@@ -54,6 +54,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 GasType = carDto.GasType,
                 Mileage = carDto.Mileage,
                 Gearbox = carDto.Gearbox,
+                Power = carDto.Power,
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
@@ -63,6 +64,16 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var result = await _mediator.Send(command);
 
             return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("{carId}")]
+        public async Task<IActionResult> DeleteCar(int carId)
+        {
+            var command = new DeleteCar{ CarId = carId };
+            await _mediator.Send(command);
+
+            return NoContent();
         }
     }
 }

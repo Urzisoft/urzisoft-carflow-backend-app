@@ -30,9 +30,9 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories
             return _dataContext.Cars.SingleOrDefaultAsync((car) => car.Id == id);
         }
 
-        Task<Car> ICarRepository.Delete(Car obj)
+        public async Task Delete(Car obj)
         {
-            throw new NotImplementedException();
+            _dataContext.Cars.Remove(obj);
         }
     }
 }

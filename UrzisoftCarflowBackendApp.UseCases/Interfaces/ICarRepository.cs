@@ -7,6 +7,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.Interfaces
         Task Create(Car obj);
         Task<List<Car>> GetAll();
         Task<Car> GetById(int id);
-        Task<Car> Delete(Car obj);
+        Task Delete(Car obj);
     }
 }
