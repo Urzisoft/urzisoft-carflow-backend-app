@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos;
@@ -74,6 +73,29 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             await _mediator.Send(command);
 
             return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("{carId}")]
+        public async Task<IActionResult> UpdateCar(int carId, [FromBody] CarPatchDto carDto)
+        {
+            var command = new UpdateCar
+            {
+                Id = carId,
+                Generation = carDto.Generation,
+                Year = carDto.Year,
+                GasType = carDto.GasType,
+                Mileage = carDto.Mileage,
+                Gearbox = carDto.Gearbox,
+                Power = carDto.Power,
+                EngineSize = carDto.EngineSize,
+                DriveWheel = carDto.DriveWheel,
+                LicensePlate = carDto.LicensePlate
+            };
+
+            var result = await _mediator.Send(command);
+
+            return result is null ? NotFound() : NoContent();
         }
     }
 }
