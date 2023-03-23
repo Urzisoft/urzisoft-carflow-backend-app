@@ -27,7 +27,12 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories
 
         public Task<Car> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _dataContext.Cars.SingleOrDefaultAsync((car) => car.Id == id);
+        }
+
+        public async Task Delete(Car obj)
+        {
+            _dataContext.Cars.Remove(obj);
         }
     }
 }

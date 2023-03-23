@@ -16,5 +16,13 @@ public class DataContext : IdentityDbContext<User>
 
     }
 
+    public DbSet<Brand> Brands { get; set; }
     public DbSet<Car> Cars { get; set; }
+    public DbSet<CarService> CarServices { get; set; }
+    public DbSet<CarWashStation> CarWashStations { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Gas> Gas { get; set; }
+    public DbSet<GasStation> GasStations { get; set; }
+    public DbSet<Model> Models { get; set; }
+    public DbSet<User> TheUsers { get; set; }
 }

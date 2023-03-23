@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\UrzisoftCarflowBackendApp.Presenters.props" />
-</Project>
