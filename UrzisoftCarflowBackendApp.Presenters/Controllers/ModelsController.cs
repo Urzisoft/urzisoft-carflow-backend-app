@@ -66,7 +66,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{modelId}")]
-        public async Task<IActionResult> UpdateCar(int modelId, [FromBody] ModelPatchDto modelDto)
+        public async Task<IActionResult> UpdateModel(int modelId, [FromBody] ModelPatchDto modelDto)
         {
             var command = new UpdateModel
             {
