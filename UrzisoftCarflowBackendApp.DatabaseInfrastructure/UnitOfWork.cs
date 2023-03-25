@@ -12,8 +12,15 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure
             _dataContext = dataContext;
             CarRepository = carRepository;
         }
+        public UnitOfWork(DataContext dataContext, ICityRepository cityRepository)
+        {
+            _dataContext = dataContext;
+            CityRepository = cityRepository;
+        }
 
         public ICarRepository CarRepository { get; private set; }
+
+        public ICityRepository CityRepository { get; private set; }
 
         public async Task Save()
         {
