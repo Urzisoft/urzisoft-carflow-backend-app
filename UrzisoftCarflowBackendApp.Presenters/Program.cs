@@ -27,6 +27,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
 
