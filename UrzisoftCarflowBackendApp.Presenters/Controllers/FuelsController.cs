@@ -75,6 +75,10 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new UpdateFuel
             {
                 Id = fuelId,
+                Name = fuelDto.Name,
+                Description = fuelDto.Description,
+                Type = fuelDto.Type,
+                Quality = fuelDto.Quality,
                 Price = fuelDto.Price,
             };
 

@@ -8,8 +8,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.FuelDtos
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(999999)]
-        [MinLength(1)]
+        [MinLength(10)]
         public string Description { get; set; }
 
         [Required]
