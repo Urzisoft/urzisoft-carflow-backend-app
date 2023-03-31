@@ -7,21 +7,21 @@ namespace UrzisoftCarflowBackendApp.UseCases.Brands.CommandHandlers
 {
     public class DeleteBrandHandler : IRequestHandler<DeleteBrand, Brand>
     {
-        private readonly IUnitOfWork _unitOfWOrk;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteBrandHandler(IUnitOfWork unitOfWOrk)
+        public DeleteBrandHandler(IUnitOfWork unitOfWork)
         {
-            _unitOfWOrk = unitOfWOrk;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<Brand> Handle(DeleteBrand request, CancellationToken cancellationToken)
         {
-            var brand = await _unitOfWOrk.BrandRepository.GetById(request.BrandId);
+            var brand = await _unitOfWork.BrandRepository.GetById(request.BrandId);
 
             if (brand is not null)
             {
-                await _unitOfWOrk.BrandRepository.Delete(brand);
-                await _unitOfWOrk.Save();
+                await _unitOfWork.BrandRepository.Delete(brand);
+                await _unitOfWork.Save();
 
                 return brand;
             }
