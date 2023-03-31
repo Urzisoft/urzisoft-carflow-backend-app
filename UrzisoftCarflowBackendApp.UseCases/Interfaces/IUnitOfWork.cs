@@ -4,6 +4,8 @@
     {
         public ICarRepository CarRepository { get; }
         public IModelRepository ModelRepository { get; }
+        public ICityRepository CityRepository { get; }
+
         Task Save();
     }
 }
