@@ -13,7 +13,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure
             CarRepository = carRepository;
             CityRepository = cityRepository;
             ModelRepository = modelRepository;
-p
         }
 
         public ICarRepository CarRepository { get; private set; }
