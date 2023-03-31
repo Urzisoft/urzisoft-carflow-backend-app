@@ -5,7 +5,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private DataContext _dataContext;
+        private readonly DataContext _dataContext;
 
         public UnitOfWork(DataContext dataContext, ICarRepository carRepository, ICityRepository cityRepository)
         {

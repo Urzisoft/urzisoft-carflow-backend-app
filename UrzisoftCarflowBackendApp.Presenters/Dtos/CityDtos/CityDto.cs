@@ -5,13 +5,13 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CityDtos
     public class CityDto
     {
         [Required]
-        [MaxLength(100)]
-        [MinLength(1)]
+        [MaxLength(10)]
+        [MinLength(3)]
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        [MinLength(1)]
+        [MaxLength(10)]
+        [MinLength(3)]
         public string County { get; set; }
     }
 }
