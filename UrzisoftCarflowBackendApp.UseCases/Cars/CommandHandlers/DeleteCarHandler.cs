@@ -7,21 +7,21 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
 {
     public class DeleteCarHandler : IRequestHandler<DeleteCar, Car>
     {
-        private readonly IUnitOfWork _unitOfWOrk;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteCarHandler(IUnitOfWork unitOfWOrk)
+        public DeleteCarHandler(IUnitOfWork unitOfWork)
         {
-            _unitOfWOrk = unitOfWOrk;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
         {
-            var car = await _unitOfWOrk.CarRepository.GetById(request.CarId);
+            var car = await _unitOfWork.CarRepository.GetById(request.CarId);
             
             if (car is not null)
             {
-                await _unitOfWOrk.CarRepository.Delete(car);
-                await _unitOfWOrk.Save();
+                await _unitOfWork.CarRepository.Delete(car);
+                await _unitOfWork.Save();
 
                 return car;
             }
