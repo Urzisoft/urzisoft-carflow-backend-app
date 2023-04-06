@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230331211716_Add-possible-migrations-2")]
+    partial class Addpossiblemigrations2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -306,7 +308,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Fuel", b =>
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Gas", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -331,7 +333,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Fuels");
+                    b.ToTable("Gas");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.GasStation", b =>
@@ -531,7 +533,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.GasStation", b =>
                 {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", "Gas")
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Gas", "Gas")
                         .WithMany()
                         .HasForeignKey("GasId");
 
