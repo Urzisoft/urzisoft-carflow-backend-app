@@ -9,6 +9,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Interfaces
     public interface IUnitOfWork
     {
         public ICarRepository CarRepository { get; }
+        public IGasStationRepository GasStationRepository { get; }
         Task Save();
     }
 }

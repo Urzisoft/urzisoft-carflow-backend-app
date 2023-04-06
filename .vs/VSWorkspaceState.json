@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\UrzisoftCarflowBackendApp.DatabaseInfrastructure",
+    "\\UrzisoftCarflowBackendApp.DatabaseInfrastructure\\Repositories",
+    "\\UrzisoftCarflowBackendApp.UseCases",
+    "\\UrzisoftCarflowBackendApp.UseCases\\Cars",
+    "\\UrzisoftCarflowBackendApp.UseCases\\Cars\\Queries",
+    "\\UrzisoftCarflowBackendApp.UseCases\\Cars\\QueryHandlers",
+    "\\UrzisoftCarflowBackendApp.UseCases\\GasStations",
+    "\\UrzisoftCarflowBackendApp.UseCases\\GasStations\\Queries",
+    "\\UrzisoftCarflowBackendApp.UseCases\\GasStations\\QueryHandlers"
+  ],
+  "SelectedNode": "\\UrzisoftCarflowBackendApp.sln",
+  "PreviewInSolutionExplorer": false
+}

@@ -10,5 +10,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 
         [Required]
         public Model Model { get; set; }
+        
     }
 }

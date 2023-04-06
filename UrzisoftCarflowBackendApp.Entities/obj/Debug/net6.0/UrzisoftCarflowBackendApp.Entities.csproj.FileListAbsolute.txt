@@ -26,3 +26,17 @@ D:\facultate\An3Sem2\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBacken
 D:\facultate\An3Sem2\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.pdb
 D:\facultate\An3Sem2\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.genruntimeconfig.cache
 D:\facultate\An3Sem2\Urzisoft\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\ref\UrzisoftCarflowBackendApp.Entities.dll
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\bin\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.deps.json
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\bin\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.runtimeconfig.json
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\bin\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.dll
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\bin\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.pdb
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.csproj.AssemblyReference.cache
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.AssemblyInfoInputs.cache
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.AssemblyInfo.cs
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.csproj.CoreCompileInputs.cache
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.dll
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\refint\UrzisoftCarflowBackendApp.Entities.dll
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.pdb
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\UrzisoftCarflowBackendApp.Entities.genruntimeconfig.cache
+C:\Users\drago\Desktop\urzisoft-carflow-backend-app\UrzisoftCarflowBackendApp.Entities\obj\Debug\net6.0\ref\UrzisoftCarflowBackendApp.Entities.dll

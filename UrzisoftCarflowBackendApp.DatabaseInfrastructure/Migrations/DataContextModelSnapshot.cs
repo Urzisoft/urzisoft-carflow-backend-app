@@ -155,6 +155,25 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brand");
+                });
+
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Car", b =>
                 {
                     b.Property<int>("Id")
@@ -163,15 +182,141 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Brand")
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DriveWheel")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Model")
+                    b.Property<int>("EngineSize")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GasType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gearbox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Generation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LicensePlate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mileage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ModelId");
+
+                    b.ToTable("Cars");
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("County")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cars");
+                    b.ToTable("City");
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Gas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Quality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Gas");
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.GasStation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GasId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rank")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("GasId");
+
+                    b.ToTable("GasStations");
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Model", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Model");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.User", b =>
@@ -288,6 +433,36 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Car", b =>
+                {
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId");
+
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Model", "Model")
+                        .WithMany()
+                        .HasForeignKey("ModelId");
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Model");
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.GasStation", b =>
+                {
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Gas", "Gas")
+                        .WithMany()
+                        .HasForeignKey("GasId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Gas");
                 });
 #pragma warning restore 612, 618
         }

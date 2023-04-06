@@ -17,4 +17,5 @@ public class DataContext : IdentityDbContext<User>
     }
 
     public DbSet<Car> Cars { get; set; }
+    public DbSet<GasStation> GasStations { get; set; }
 }

@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj": {}
+    "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj": {}
   },
   "projects": {
-    "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj": {
+    "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj",
         "projectName": "UrzisoftCarflowBackendApp.Entities",
-        "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj",
-        "packagesPath": "C:\\Users\\cigan\\.nuget\\packages\\",
-        "outputPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\obj\\",
+        "projectPath": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj",
+        "packagesPath": "C:\\Users\\drago\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cigan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\drago\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -130,21 +125,17 @@
         }
       }
     },
-    "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj": {
+    "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj",
+        "projectUniqueName": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj",
         "projectName": "UrzisoftCarflowBackendApp.UseCases",
-        "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj",
-        "packagesPath": "C:\\Users\\cigan\\.nuget\\packages\\",
-        "outputPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\obj\\",
+        "projectPath": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\UrzisoftCarflowBackendApp.UseCases.csproj",
+        "packagesPath": "C:\\Users\\drago\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.UseCases\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cigan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\drago\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -152,15 +143,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj": {
-                "projectPath": "D:\\facultate\\An3Sem2\\Urzisoft\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj"
+              "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj": {
+                "projectPath": "C:\\Users\\drago\\Desktop\\urzisoft-carflow-backend-app\\UrzisoftCarflowBackendApp.Entities\\UrzisoftCarflowBackendApp.Entities.csproj"
               }
             }
           }

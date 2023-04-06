@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
+﻿using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
-namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure
+public class UnitOfWork : IUnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    private readonly DataContext _dataContext;
+    public ICarRepository CarRepository { get; }
+    public IGasStationRepository GasStationRepository { get; }
+
+    public UnitOfWork(DataContext dataContext, ICarRepository carRepository, IGasStationRepository gasStationRepository)
     {
-        private DataContext _dataContext;
+        _dataContext = dataContext;
+        CarRepository = carRepository;
+        GasStationRepository = gasStationRepository;
+    }
 
-        public UnitOfWork(DataContext dataContext, ICarRepository carRepository)
-        {
-            _dataContext = dataContext;
-            CarRepository = carRepository;
-        }
-
-        public ICarRepository CarRepository { get; private set; }
-
-        public async Task Save()
-        {
-            await _dataContext.SaveChangesAsync();
-        }
+    public async Task Save()
+    {
+        await _dataContext.SaveChangesAsync();
     }
 }
