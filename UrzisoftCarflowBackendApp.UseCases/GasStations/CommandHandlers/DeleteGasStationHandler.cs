@@ -29,9 +29,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
                 await _unitOfWork.Save();
 
                 return gasStation;
-
-
             }
+
             return null;
         }
     }

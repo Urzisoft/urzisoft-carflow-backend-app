@@ -9,8 +9,5 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos
         public Fuel Fuel { get; set; }
         [Required]
         public City City { get; set; }  
-
-
-
     }
 }

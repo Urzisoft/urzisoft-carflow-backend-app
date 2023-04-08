@@ -21,7 +21,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
             {
                 Fuel = request.Fuel,
                 City = request.City
-
             };
 
             await _unitOfWork.GasStationRepository.Create(gasStation);
@@ -29,7 +28,5 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 
             return gasStation;
         }
-
-
     }
 }

@@ -14,7 +14,5 @@ namespace UrzisoftCarflowBackendApp.UseCases.Interfaces
         Task<GasStation> GetById(int id);
         Task Delete(GasStation obj);
     }
-    
-    
 }
 

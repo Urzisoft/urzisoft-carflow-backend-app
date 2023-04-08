@@ -23,6 +23,5 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.QueryHandlers
         {
             return await _unitOfWork.GasStationRepository.GetAll();
         }
-
     }
 }

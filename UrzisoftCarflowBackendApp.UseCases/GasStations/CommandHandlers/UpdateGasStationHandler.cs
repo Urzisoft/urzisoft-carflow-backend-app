@@ -31,8 +31,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
                 gasStation.Address = request.Address ?? gasStation.Address;
                 gasStation.Rank = request.Rank ?? gasStation.Rank;
 
-
-
                 await _unitOfWork.Save();
 
                 return gasStation;

@@ -52,8 +52,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             {
                 Fuel = gasStationDto.Fuel,
                 City = gasStationDto.City
-
-
             };
 
             var result = await _mediator.Send(command);
