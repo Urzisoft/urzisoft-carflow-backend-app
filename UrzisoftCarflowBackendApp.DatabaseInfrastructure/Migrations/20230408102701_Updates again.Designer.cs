@@ -12,8 +12,8 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230406191603_newMigration")]
-    partial class newMigration
+    [Migration("20230408102701_Updates again")]
+    partial class Updatesagain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
