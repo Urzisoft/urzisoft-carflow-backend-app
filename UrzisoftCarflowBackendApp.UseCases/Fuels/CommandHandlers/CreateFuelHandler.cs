@@ -5,11 +5,11 @@ using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Fuels.CommandHandlers
 {
-    public class CreateFuelHandler : IRequestHandler<CreateFuel, Fuel>
+    public class CreateGasStationHandler : IRequestHandler<CreateFuel, Fuel>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateFuelHandler(IUnitOfWork unitOfWork)
+        public CreateGasStationHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
