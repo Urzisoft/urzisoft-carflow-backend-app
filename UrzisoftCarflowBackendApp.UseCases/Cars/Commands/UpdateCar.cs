@@ -6,6 +6,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.Commands
     public class UpdateCar : IRequest<Car>
     {
         public int Id { get; set; }
+        public Brand Brand { get; set; }
+        public Model Model { get; set; }
         public string Generation { get; set; }
         public int? Year { get; set; }
         public string GasType { get; set; }

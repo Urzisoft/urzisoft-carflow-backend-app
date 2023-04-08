@@ -1,9 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 {
     public class CarPatchDto
     {
+        public Brand Brand { get; set; }
+
+        public Model Model { get; set; }
+
         public string Generation { get; set; }
 
         public int Year { get; set; }

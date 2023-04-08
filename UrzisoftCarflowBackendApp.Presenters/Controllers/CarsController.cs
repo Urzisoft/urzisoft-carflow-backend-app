@@ -82,6 +82,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new UpdateCar
             {
                 Id = carId,
+                Brand = carDto.Brand,
+                Model = carDto.Model,
                 Generation = carDto.Generation,
                 Year = carDto.Year,
                 GasType = carDto.GasType,
