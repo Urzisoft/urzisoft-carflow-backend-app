@@ -21,6 +21,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             if (car is not null)
             {
                 car.Generation = request.Generation ?? car.Generation;
+                car.Brand = request.Brand ?? car.Brand;
+                car.Model =  request.Model ?? car.Model;    
                 car.Year = request.Year ?? car.Year;
                 car.GasType = request.GasType ?? car.GasType;
                 car.Mileage = request.Mileage ?? car.Mileage;

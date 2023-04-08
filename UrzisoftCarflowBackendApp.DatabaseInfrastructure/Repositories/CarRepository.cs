@@ -22,12 +22,15 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories
 
         public Task<List<Car>> GetAll()
         {
-            return _dataContext.Cars.ToListAsync();
+            return _dataContext.Cars.Include((car) => car.Model).
+                Include((car) => car.Brand).ToListAsync();
         }
 
         public Task<Car> GetById(int id)
         {
-            return _dataContext.Cars.SingleOrDefaultAsync((car) => car.Id == id);
+            return _dataContext.Cars.Include((car) => car.Model).
+                Include((car) => car.Brand).
+                SingleOrDefaultAsync((car) => car.Id == id);
         }
 
         public async Task Delete(Car obj)
