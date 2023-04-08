@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230408102341_update-all-databases")]
+    partial class updatealldatabases
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -262,11 +264,11 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsSelfWash")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("LocationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -282,7 +284,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("CarWashStations");
                 });
@@ -345,10 +347,10 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CityId")
+                    b.Property<int?>("GasId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FuelId")
+                    b.Property<int?>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -359,11 +361,11 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("GasId");
 
-                    b.HasIndex("FuelId");
+                    b.HasIndex("LocationId");
 
-                    b.ToTable("GasStation");
+                    b.ToTable("GasStations");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Model", b =>
@@ -522,26 +524,26 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarWashStation", b =>
                 {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "City")
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "Location")
                         .WithMany()
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("LocationId");
 
-                    b.Navigation("City");
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.GasStation", b =>
                 {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "City")
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", "Gas")
                         .WithMany()
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("GasId");
 
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", "Fuel")
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "Location")
                         .WithMany()
-                        .HasForeignKey("FuelId");
+                        .HasForeignKey("LocationId");
 
-                    b.Navigation("City");
+                    b.Navigation("Gas");
 
-                    b.Navigation("Fuel");
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarService", b =>
