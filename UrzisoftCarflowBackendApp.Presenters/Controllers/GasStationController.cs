@@ -50,8 +50,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         {
             var command = new CreateGasStation
             {
+                Name = gasStationDto.Name,
                 Fuel = gasStationDto.Fuel,
-                City = gasStationDto.City
+                City = gasStationDto.City,
+                Address = gasStationDto.Address,  
+                Rank = gasStationDto.Rank
             };
 
             var result = await _mediator.Send(command);
@@ -76,8 +79,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new UpdateGasStation
             {
                 Id = gasStationId,
+                Name = gasStationDto.Name,
                 Fuel = gasStationDto.Fuel,
-                City = gasStationDto.City
+                City = gasStationDto.City,
+                Address = gasStationDto.Address,
+                Rank = gasStationDto.Rank
             };
 
             var result = await _mediator.Send(command);

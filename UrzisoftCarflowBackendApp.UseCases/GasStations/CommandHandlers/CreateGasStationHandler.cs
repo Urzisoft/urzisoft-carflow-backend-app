@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using UrzisoftCarflowBackendApp.Entities;
-using UrzisoftCarflowBackendApp.UseCases.Cars.Commands;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
@@ -19,8 +18,11 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
         {
             var gasStation = new GasStation
             {
+                Name = request.Name,
                 Fuel = request.Fuel,
-                City = request.City
+                City = request.City,
+                Address = request.Address,
+                Rank = request.Rank
             };
 
             await _unitOfWork.GasStationRepository.Create(gasStation);
