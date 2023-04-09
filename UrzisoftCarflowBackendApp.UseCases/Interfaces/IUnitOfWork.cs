@@ -7,6 +7,8 @@
         public IBrandRepository BrandRepository { get; }
         public ICityRepository CityRepository { get; }
         public IFuelRepository FuelRepository { get; }
+        public IGasStationRepository GasStationRepository { get; }
+        public ICarServiceRepository CarServiceRepository { get; }
         Task Save();
     }
 }
