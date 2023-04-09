@@ -7,7 +7,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories
 {
     public class CarServiceRepository : ICarServiceRepository
     {
-
         private readonly DataContext _dataContext;
 
         public CarServiceRepository(DataContext dataContext)
