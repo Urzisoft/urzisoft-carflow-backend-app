@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos
@@ -17,6 +18,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos
 
         [Required]
         [MinLength(1)]
-        public Brand[] BrandsList { get; set; }
+        public List<Brand> BrandsList { get; set; }
     }
 }
