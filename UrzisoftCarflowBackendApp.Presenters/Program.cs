@@ -37,6 +37,7 @@ builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<IFuelRepository, FuelRepository>();
 builder.Services.AddScoped<IGasStationRepository, GasStationRepository>();
+builder.Services.AddScoped<ICarServiceRepository, CarServiceRepository>();
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
 
 var app = builder.Build();
