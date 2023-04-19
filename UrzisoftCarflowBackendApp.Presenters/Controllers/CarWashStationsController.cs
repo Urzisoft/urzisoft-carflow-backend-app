@@ -47,13 +47,13 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         {
             var command = new CreateCarWashStation
             {
-               Name = carWashStationDto.Name,
-               StandardPrice = carWashStationDto.StandardPrice,
-               PremiumPrice = carWashStationDto.PremiumPrice,
-               Location = carWashStationDto.Location,
-               Address = carWashStationDto.Address,
-               Rank = carWashStationDto.Rank,
-               IsSelfWash = carWashStationDto.IsSelfWash
+                Name = carWashStationDto.Name,
+                StandardPrice = carWashStationDto.StandardPrice,
+                PremiumPrice = carWashStationDto.PremiumPrice,
+                City = carWashStationDto.City,
+                Address = carWashStationDto.Address,
+                Rank = carWashStationDto.Rank,
+                IsSelfWash = carWashStationDto.IsSelfWash
             };
 
             var result = await _mediator.Send(command);

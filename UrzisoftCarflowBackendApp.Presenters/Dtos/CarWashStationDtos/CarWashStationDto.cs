@@ -14,7 +14,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarWashStationDtos
         public int PremiumPrice { get; set; }
 
         [Required]
-        public City Location { get; set; }
+        public City City { get; set; }
         
         [Required]
         public string Address { get; set; }
