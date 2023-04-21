@@ -19,7 +19,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
         public async Task<RegisterResponse> Handle(Register request, CancellationToken cancellationToken)
         {
             var userExists = await _userManager.FindByNameAsync(request.Username);
-            
+
             if (userExists != null)
             {
                 return new RegisterResponse
