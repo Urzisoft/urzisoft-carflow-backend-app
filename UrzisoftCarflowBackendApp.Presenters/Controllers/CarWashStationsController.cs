@@ -70,5 +70,26 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
             return NoContent();
         }
+
+        [HttpPatch]
+        [Route("{carWashStationId}")]
+        public async Task<IActionResult> UpdateCarWashStation(int carWashStationId, [FromBody] CarWashStationPatchDto carWashStationDto)
+        {
+            var command = new UpdateCarWashStation
+            {
+                Id = carWashStationId,
+                Name = carWashStationDto.Name,
+                StandardPrice = carWashStationDto.StandardPrice,
+                PremiumPrice = carWashStationDto.PremiumPrice,
+                City = carWashStationDto.City,
+                Address = carWashStationDto.Address,
+                Rank = carWashStationDto.Rank,
+                IsSelfWash = carWashStationDto.IsSelfWash
+            };
+
+            var result = await _mediator.Send(command);
+
+            return result is null ? NotFound() : NoContent();
+        }
     }
 }
