@@ -30,12 +30,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
             var result = await _mediator.Send(command);
 
-            if (result.Status == "Error")
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, result);
-            }
-
-            return Ok(result);
+            return result.Status == "Error" ? StatusCode(StatusCodes.Status500InternalServerError, result) : Ok(result);
         }
 
         [HttpPost]
@@ -50,12 +45,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
             var result = await _mediator.Send(command);
 
-            if (result == null)
-            {
-                return Unauthorized();
-            }
-
-            return Ok(result);
+            return result == null ? Unauthorized() : Ok(result);
         }
     }
 }
