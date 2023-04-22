@@ -66,5 +66,23 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
             return NoContent();
         }
+
+        [HttpPatch]
+        [Route("{carServiceId}")]
+        public async Task<IActionResult> UpdateCarService(int carServiceId, [FromBody] CarServicePatchDto carServiceDto)
+        {
+            var command = new UpdateCarService
+            {
+                Id = carServiceId,
+                Name = carServiceDto.Name,
+                Description = carServiceDto.Description,
+                Address = carServiceDto.Address,
+                BrandsList = carServiceDto.BrandsList,
+            };
+
+            var result = await _mediator.Send(command);
+
+            return result is null ? NotFound() : NoContent();
+        }
     }
 }
