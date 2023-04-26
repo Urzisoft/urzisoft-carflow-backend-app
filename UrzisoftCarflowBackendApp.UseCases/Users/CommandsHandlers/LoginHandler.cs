@@ -47,7 +47,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 
                 var token = new JwtSecurityToken(
                     issuer: jwtSettings.ValidIssuer,
-                    expires: DateTime.Now.AddHours(2),
+                    expires: DateTime.Now.AddHours(24),
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );

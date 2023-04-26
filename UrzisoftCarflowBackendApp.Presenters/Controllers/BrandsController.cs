@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.BrandDtos;
@@ -9,6 +10,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/brands")]
     [ApiController]
+
     public class BrandsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,6 +21,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "ActivePolicy")]
         public async Task<IActionResult> GetAllBrandsEndpoint()
         {
             var query = new GetAllBrands();
