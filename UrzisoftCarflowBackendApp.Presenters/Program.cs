@@ -68,14 +68,12 @@ builder.Services.AddAuthentication(options =>
      };
  });
 
-// Authorization Policy
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("ActivePolicy", policy =>
           policy.RequireRole("Active"));
 });
 
-// MediarR and AutoMapper
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
 
 var app = builder.Build();
