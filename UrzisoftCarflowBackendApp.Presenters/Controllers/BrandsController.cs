@@ -10,6 +10,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/brands")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
 
     public class BrandsController : ControllerBase
     {
@@ -21,7 +22,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "ActivePolicy")]
         public async Task<IActionResult> GetAllBrandsEndpoint()
         {
             var query = new GetAllBrands();

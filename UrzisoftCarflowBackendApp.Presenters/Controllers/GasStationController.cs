@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Azure;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/gas-stations")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
     public class GasStationController : ControllerBase
     {
         private readonly IMediator _mediator;

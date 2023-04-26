@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.ModelDtos;
@@ -9,6 +10,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/models")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
     public class ModelsController : ControllerBase
     {
         private readonly IMediator _mediator;
