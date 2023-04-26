@@ -1,20 +1,17 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Azure;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos;
-using UrzisoftCarflowBackendApp.Presenters.Dtos.ModelDtos;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Queries;
-using UrzisoftCarflowBackendApp.UseCases.Models.Commands;
-using UrzisoftCarflowBackendApp.UseCases.Models.Queries;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/gas-stations")]
     [ApiController]
     [Authorize(Policy = "ActivePolicy")]
+
     public class GasStationController : ControllerBase
     {
         private readonly IMediator _mediator;

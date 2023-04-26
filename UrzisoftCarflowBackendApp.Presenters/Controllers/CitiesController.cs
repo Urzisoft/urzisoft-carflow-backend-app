@@ -11,6 +11,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
     [Route("api/cities")]
     [ApiController]
     [Authorize(Policy = "ActivePolicy")]
+
     public class CityController : ControllerBase
     {
         private readonly IMediator _mediator;
