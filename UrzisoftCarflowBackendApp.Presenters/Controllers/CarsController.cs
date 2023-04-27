@@ -60,7 +60,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
                 ContainerName = "carflow-cars",
-
             };
 
             var result = await _mediator.Send(command);
@@ -72,7 +71,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{carId}")]
         public async Task<IActionResult> DeleteCar(int carId)
         {
-            var command = new DeleteCar{ CarId = carId };
+            var command = new DeleteCar{ 
+                CarId = carId,
+                ContainerName = "carflow-cars",
+            };
+
             await _mediator.Send(command);
 
             return NoContent();

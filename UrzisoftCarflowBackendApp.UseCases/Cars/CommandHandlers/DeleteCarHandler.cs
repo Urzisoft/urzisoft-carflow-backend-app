@@ -8,10 +8,12 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
     public class DeleteCarHandler : IRequestHandler<DeleteCar, Car>
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IImageStorageService _imageStorageService;
 
-        public DeleteCarHandler(IUnitOfWork unitOfWork)
+        public DeleteCarHandler(IUnitOfWork unitOfWork, IImageStorageService imageStorageService)
         {
             _unitOfWork = unitOfWork;
+            _imageStorageService = imageStorageService;
         }
 
         public async Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
@@ -20,6 +22,9 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             
             if (car is not null)
             {
+                var fileName = car.Brand.Name + "-" + car.Model.Name + "-" + car.LicensePlate;
+
+                await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarRepository.Delete(car);
                 await _unitOfWork.Save();
 

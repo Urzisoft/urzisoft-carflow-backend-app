@@ -19,7 +19,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
 
         public async Task<Car> Handle(CreateCar request, CancellationToken cancellationToken)
         {
-            string fileName = request.Brand.Name + " " + request.Model.Name + " " + request.LicensePlate;
+            string fileName = request.Brand.Name + "-" + request.Model.Name + "-" + request.LicensePlate;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var car = new Car
