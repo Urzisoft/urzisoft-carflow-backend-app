@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos;
 using UrzisoftCarflowBackendApp.UseCases.Cars.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Cars.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
@@ -59,7 +60,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
-                ContainerName = "carflow-cars",
+                ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 
             var result = await _mediator.Send(command);
