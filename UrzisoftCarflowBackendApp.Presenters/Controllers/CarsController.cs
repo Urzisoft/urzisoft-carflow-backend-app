@@ -74,7 +74,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         {
             var command = new DeleteCar{ 
                 CarId = carId,
-                ContainerName = "carflow-cars",
+                ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 
             await _mediator.Send(command);
@@ -101,7 +101,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
-                ContainerName = "carflow-cars",
+                ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 
             var result = await _mediator.Send(command);
