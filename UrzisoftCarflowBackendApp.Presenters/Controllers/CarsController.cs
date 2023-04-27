@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos;
@@ -42,10 +43,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCarEndpoint([FromBody] CarDto carDto)
+        public async Task<IActionResult> CreateCarEndpoint([FromForm] CarDto carDto, IFormFile File)
         {
             var command = new CreateCar
             {
+                File = File,
                 Brand = carDto.Brand,
                 Model = carDto.Model,
                 Generation = carDto.Generation,
@@ -57,6 +59,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
+                ContainerName = "carflow-cars",
 
             };
 
