@@ -83,11 +83,12 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{carId}")]
-        public async Task<IActionResult> UpdateCar(int carId, [FromBody] CarPatchDto carDto)
+        public async Task<IActionResult> UpdateCar(int carId, [FromForm] CarPatchDto carDto, IFormFile File)
         {
             var command = new UpdateCar
             {
                 Id = carId,
+                File = File,
                 Brand = carDto.Brand,
                 Model = carDto.Model,
                 Generation = carDto.Generation,
@@ -98,7 +99,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Power = carDto.Power,
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
-                LicensePlate = carDto.LicensePlate
+                LicensePlate = carDto.LicensePlate,
+                ContainerName = "carflow-cars",
             };
 
             var result = await _mediator.Send(command);
