@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.Cars.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
 {
@@ -22,7 +23,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             
             if (car is not null)
             {
-                var fileName = car.Brand.Name + "-" + car.Model.Name + "-" + car.LicensePlate;
+                var fileName = AzureBlobFileNameBuilder.GetCarFileName(car.Brand.Name, car.Model.Name, car.LicensePlate);
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarRepository.Delete(car);

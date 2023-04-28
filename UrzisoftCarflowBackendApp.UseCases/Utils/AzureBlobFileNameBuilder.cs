@@ -6,5 +6,10 @@
         {
             return brandName;
         }
+
+        public static string GetCarFileName(string brandName, string modelName, string licensePlate)
+        {
+            return brandName + "-" + modelName + "-" + licensePlate;
+        }
     }
 }
