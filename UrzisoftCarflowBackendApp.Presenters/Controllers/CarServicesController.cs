@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos;
 using UrzisoftCarflowBackendApp.UseCases.CarServices.Commands;
 using UrzisoftCarflowBackendApp.UseCases.CarServices.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
@@ -50,6 +51,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Description = carServiceDto.Description,
                 Address = carServiceDto.Address,
                 BrandsList = carServiceDto.BrandsList,
+                ContainerName = AzureContainers.GetCarFlowCarServicesContainer()
             };
 
             var result = await _mediator.Send(command);
@@ -61,7 +63,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{carServiceId}")]
         public async Task<IActionResult> DeleteCar(int carServiceId)
         {
-            var command = new DeleteCarService { CarServiceId = carServiceId };
+            var command = new DeleteCarService { 
+                CarServiceId = carServiceId,
+                ContainerName = AzureContainers.GetCarFlowCarServicesContainer()
+            };
+
             await _mediator.Send(command);
 
             return NoContent();
@@ -78,6 +84,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Description = carServiceDto.Description,
                 Address = carServiceDto.Address,
                 BrandsList = carServiceDto.BrandsList,
+                ContainerName = AzureContainers.GetCarFlowCarServicesContainer()
             };
 
             var result = await _mediator.Send(command);
