@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/car-services")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
+
     public class CarServicesController : ControllerBase
     {
         private readonly IMediator _mediator;

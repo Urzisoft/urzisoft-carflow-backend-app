@@ -1,11 +1,14 @@
 using Azure.Storage.Blobs;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories;
@@ -13,6 +16,7 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Services;
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.Presenters.Settings;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +54,37 @@ builder.Services.AddScoped<ICarWashStationRepository, CarWashStationRepository>(
 builder.Services.AddScoped<IImageStorageService, ImageStorageService>();
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
 
+var jwtSettings = builder.Configuration.GetSection(nameof(JwtSettings)).Get<JwtSettings>();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+.AddJwtBearer(options =>
+{
+     options.SaveToken = true;
+     options.RequireHttpsMetadata = false;
+     options.TokenValidationParameters = new TokenValidationParameters()
+     {
+         ValidateIssuer = true,
+         ValidateAudience = false,
+         ValidAudience = jwtSettings.ValidAudience,
+         ValidIssuer = jwtSettings.ValidIssuer,
+         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+     };
+ });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ActivePolicy", policy =>
+          policy.RequireRole("Active"));
+});
+
+builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -62,6 +97,7 @@ app.UseCors("corsapp");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
