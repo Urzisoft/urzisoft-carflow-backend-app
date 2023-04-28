@@ -15,7 +15,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
         {
             _unitOfWork = unitOfWork;
             _imageStorageService = imageStorageService;
-          _imageStorageService = imageStorageService;
         }
 
         public async Task<CarWashStation> Handle(UpdateCarWashStation request, CancellationToken cancellationToken)
