@@ -19,7 +19,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Brands.CommandHandlers
 
         public async Task<Brand> Handle(CreateBrand request, CancellationToken cancellationToken)
         {
-            var fileName = AzureBlobFileNameBuilder.GetBrandFileName(request.Name);
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnValue(request.Name);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var brand = new Brand

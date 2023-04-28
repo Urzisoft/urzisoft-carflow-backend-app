@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.CarWashStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
 {
@@ -19,10 +21,9 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
         public async Task<CarWashStation> Handle(DeleteCarWashStation request, CancellationToken cancellationToken)
         {
             var carWashStation = await _unitOfWork.CarWashStationRepository.GetById(request.CarWashStationId);
-
             if (carWashStation is not null)
             {
-                var fileName = carWashStation.Name + "-" + carWashStation.Address;
+                var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(carWashStation.Name, carWashStation.Address);
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarWashStationRepository.Delete(carWashStation);

@@ -23,7 +23,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             
             if (car is not null)
             {
-                var fileName = AzureBlobFileNameBuilder.GetCarFileName(car.Brand.Name, car.Model.Name, car.LicensePlate);
+                var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(car.Brand.Name, car.Model.Name, car.LicensePlate);
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarRepository.Delete(car);

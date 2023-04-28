@@ -2,19 +2,19 @@
 {
     public class AzureBlobFileNameBuilder
     {
-        public static string GetBrandFileName(string brandName)
+        public static string GetFileNameBasedOnValue(string value)
         {
-            return brandName;
+            return value;
         }
 
-        public static string GetCarFileName(string brandName, string modelName, string licensePlate)
+        public static string GetFileNameBasedOnThreeValues(string firstValue, string secondValue, string thirdValue)
         {
-            return brandName + "-" + modelName + "-" + licensePlate;
+            return firstValue + "-" + secondValue + "-" + thirdValue;
         }
 
-        public static string GetCarServiceFileName(string serviceName, string serviceAddress)
+        public static string GetFileNameBasedOnTwoValues(string firstValue, string secondValue)
         {
-            return serviceName + "-" + serviceAddress;
+            return firstValue + "-" + secondValue;
         }
     }
 }

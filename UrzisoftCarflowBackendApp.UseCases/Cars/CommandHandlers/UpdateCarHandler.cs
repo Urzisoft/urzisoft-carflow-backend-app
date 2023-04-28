@@ -23,7 +23,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             var validBrandName = request.Brand?.Name ?? car.Brand.Name;
             var validModelName = request.Model?.Name ?? car.Model.Name;
             var validLicensePlate = request.LicensePlate ?? car.LicensePlate;
-            var fileName = AzureBlobFileNameBuilder.GetCarFileName(validBrandName, validModelName, validLicensePlate);
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(validBrandName, validModelName, validLicensePlate);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             if (car is not null)

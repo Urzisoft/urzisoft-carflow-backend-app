@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.CarWashStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
 {
@@ -22,7 +23,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
             var carWashStation = await _unitOfWork.CarWashStationRepository.GetById(request.Id);
             var validName = request.Name ?? carWashStation.Name;
             var validAddress = request.Address ?? carWashStation.Address;
-            var fileName = validName + "-" + validAddress;
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(validName, validAddress);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
 
