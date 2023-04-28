@@ -3,6 +3,7 @@
     public class GasStation
     {
         public int Id { get; set; }
+        public string StorageImageUrl { get; set; }
         public string Name { get; set; }
         public Fuel Fuel { get; set; }   
         public City City { get; set; }
