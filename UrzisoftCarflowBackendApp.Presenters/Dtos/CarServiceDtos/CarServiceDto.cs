@@ -16,7 +16,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos
         [Required]
         public string Address { get; set; }
 
-        [Required]
         [MinLength(1)]
         public List<Brand> BrandsList { get; set; }
     }

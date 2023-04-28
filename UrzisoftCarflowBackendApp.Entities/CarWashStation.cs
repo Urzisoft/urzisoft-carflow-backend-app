@@ -3,6 +3,7 @@
     public class CarWashStation
     {
         public int Id { get; set; }
+        public string StorageImageUrl { get; set; }
         public string Name { get; set; }
         public int StandardPrice { get; set; }
         public int PremiumPrice { get; set; }

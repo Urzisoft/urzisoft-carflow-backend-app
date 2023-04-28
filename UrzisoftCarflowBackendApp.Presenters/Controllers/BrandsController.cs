@@ -1,14 +1,19 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.BrandDtos;
 using UrzisoftCarflowBackendApp.UseCases.Brands.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Brands.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/brands")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
+
     public class BrandsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -42,12 +47,14 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBrandEndpoint([FromBody] BrandDto brandDto)
+        public async Task<IActionResult> CreateBrandEndpoint([FromForm] BrandDto brandDto, IFormFile File)
         {
             var command = new CreateBrand
             {
+                File = File,
                 Name = brandDto.Name,
                 Description = brandDto.Description,
+                ContainerName = AzureContainers.GetCarFlowBrandsContainer()
             };
 
             var result = await _mediator.Send(command);
@@ -59,7 +66,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{brandId}")]
         public async Task<IActionResult> DeleteBrand(int brandId)
         {
-            var command = new DeleteBrand{ BrandId = brandId };
+            var command = new DeleteBrand{ 
+                BrandId = brandId,
+                ContainerName = AzureContainers.GetCarFlowBrandsContainer()
+            };
+
             await _mediator.Send(command);
 
             return NoContent();
@@ -67,13 +78,15 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{brandId}")]
-        public async Task<IActionResult> UpdateCar(int brandId, [FromBody] BrandPatchDto brandDto)
+        public async Task<IActionResult> UpdateCar(int brandId, [FromForm] BrandPatchDto brandDto, IFormFile File)
         {
             var command = new UpdateBrand
             {
                 Id = brandId,
+                File = File,
                 Name = brandDto.Name,
                 Description = brandDto.Description,
+                ContainerName = AzureContainers.GetCarFlowBrandsContainer()
             };
 
             var result = await _mediator.Send(command);

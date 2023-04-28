@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.FuelDtos;
@@ -9,6 +10,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/fuels")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
+
     public class FuelsController : ControllerBase
     {
         private readonly IMediator _mediator;

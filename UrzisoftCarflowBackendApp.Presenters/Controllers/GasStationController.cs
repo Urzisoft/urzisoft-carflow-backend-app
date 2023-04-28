@@ -1,25 +1,28 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Azure;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos;
-using UrzisoftCarflowBackendApp.Presenters.Dtos.ModelDtos;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Queries;
-using UrzisoftCarflowBackendApp.UseCases.Models.Commands;
-using UrzisoftCarflowBackendApp.UseCases.Models.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
     [Route("api/gas-stations")]
     [ApiController]
+    [Authorize(Policy = "ActivePolicy")]
+
     public class GasStationController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IImageStorageService _imageStorageService;
 
-        public GasStationController(IMediator mediator)
+        public GasStationController(IMediator mediator, IImageStorageService imageStorageService)
         {
             _mediator = mediator;
+            _imageStorageService = imageStorageService;
         }
 
         [HttpGet]
@@ -54,7 +57,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Fuel = gasStationDto.Fuel,
                 City = gasStationDto.City,
                 Address = gasStationDto.Address,  
-                Rank = gasStationDto.Rank
+                Rank = gasStationDto.Rank,
+                ContainerName = AzureContainers.GetCarFlowGasStations(),
             };
 
             var result = await _mediator.Send(command);
@@ -66,7 +70,10 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{gasStationId}")]
         public async Task<IActionResult> DeleteGasStation(int gasStationId)
         {
-            var command = new DeleteGasStation { GasStationId = gasStationId };
+            var command = new DeleteGasStation { 
+                GasStationId = gasStationId,
+                ContainerName = AzureContainers.GetCarFlowGasStations()
+            };
             await _mediator.Send(command);
 
             return NoContent();
@@ -83,7 +90,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Fuel = gasStationDto.Fuel,
                 City = gasStationDto.City,
                 Address = gasStationDto.Address,
-                Rank = gasStationDto.Rank
+                Rank = gasStationDto.Rank,
+                ContainerName = AzureContainers.GetCarFlowGasStations()
             };
 
             var result = await _mediator.Send(command);
