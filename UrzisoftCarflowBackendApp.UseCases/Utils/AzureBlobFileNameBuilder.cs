@@ -11,5 +11,10 @@
         {
             return brandName + "-" + modelName + "-" + licensePlate;
         }
+
+        public static string GetCarServiceFileName(string serviceName, string serviceAddress)
+        {
+            return serviceName + "-" + serviceAddress;
+        }
     }
 }
