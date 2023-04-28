@@ -8,10 +8,12 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
     public class DeleteCityHandler : IRequestHandler<DeleteCity, City>
     {
         private readonly IUnitOfWork _unitOfWOrk;
+        private readonly IImageStorageService _imageStorageService;
 
-        public DeleteCityHandler(IUnitOfWork unitOfWOrk)
+        public DeleteCityHandler(IUnitOfWork unitOfWOrk, IImageStorageService imageStorageService)
         {
             _unitOfWOrk = unitOfWOrk;
+            _imageStorageService = imageStorageService;
         }
 
         public async Task<City> Handle(DeleteCity request, CancellationToken cancellationToken)
@@ -20,6 +22,9 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
             
             if (city is not null)
             {
+                string fileName = city.Name + "-" + city.County;
+
+                await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWOrk.CityRepository.Delete(city);
                 await _unitOfWOrk.Save();
 
