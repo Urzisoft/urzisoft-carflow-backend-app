@@ -1,9 +1,11 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarWashStationDtos;
 using UrzisoftCarflowBackendApp.UseCases.CarWashStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.CarWashStations.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
@@ -43,17 +45,19 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCarWashStationEndpoint([FromBody] CarWashStationDto carWashStationDto)
+        public async Task<IActionResult> CreateCarWashStationEndpoint([FromForm] CarWashStationDto carWashStationDto, IFormFile File)
         {
             var command = new CreateCarWashStation
             {
+                File = File,
                 Name = carWashStationDto.Name,
                 StandardPrice = carWashStationDto.StandardPrice,
                 PremiumPrice = carWashStationDto.PremiumPrice,
                 City = carWashStationDto.City,
                 Address = carWashStationDto.Address,
                 Rank = carWashStationDto.Rank,
-                IsSelfWash = carWashStationDto.IsSelfWash
+                IsSelfWash = carWashStationDto.IsSelfWash,
+                ContainerName = AzureContainers.GetCarFlowWashStationsContainer()
             };
 
             var result = await _mediator.Send(command);
@@ -65,7 +69,10 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{carWashStationId}")]
         public async Task<IActionResult> DeleteCarWashStation(int carWashStationId)
         {
-            var command = new DeleteCarWashStation { CarWashStationId = carWashStationId };
+            var command = new DeleteCarWashStation { 
+                CarWashStationId = carWashStationId,
+                ContainerName = AzureContainers.GetCarFlowWashStationsContainer()
+            };
             await _mediator.Send(command);
 
             return NoContent();
@@ -73,18 +80,20 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{carWashStationId}")]
-        public async Task<IActionResult> UpdateCarWashStation(int carWashStationId, [FromBody] CarWashStationPatchDto carWashStationDto)
+        public async Task<IActionResult> UpdateCarWashStation(int carWashStationId, [FromForm] CarWashStationPatchDto carWashStationDto, IFormFile File)
         {
             var command = new UpdateCarWashStation
             {
                 Id = carWashStationId,
+                File = File,
                 Name = carWashStationDto.Name,
                 StandardPrice = carWashStationDto.StandardPrice,
                 PremiumPrice = carWashStationDto.PremiumPrice,
                 City = carWashStationDto.City,
                 Address = carWashStationDto.Address,
                 Rank = carWashStationDto.Rank,
-                IsSelfWash = carWashStationDto.IsSelfWash
+                IsSelfWash = carWashStationDto.IsSelfWash,
+                ContainerName = AzureContainers.GetCarFlowWashStationsContainer(),
             };
 
             var result = await _mediator.Send(command);

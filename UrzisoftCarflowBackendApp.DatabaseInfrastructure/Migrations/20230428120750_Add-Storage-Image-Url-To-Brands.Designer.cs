@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230428120750_Add-Storage-Image-Url-To-Brands")]
+    partial class AddStorageImageUrlToBrands
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,9 +254,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StorageImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("CarServices");
@@ -289,9 +288,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<int>("StandardPrice")
                         .HasColumnType("int");
 
-                    b.Property<string>("StorageImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
@@ -311,9 +307,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StorageImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -370,9 +363,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rank")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StorageImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

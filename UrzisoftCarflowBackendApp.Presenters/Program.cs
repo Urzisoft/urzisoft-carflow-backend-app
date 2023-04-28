@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -8,7 +9,9 @@ using Microsoft.Extensions.Hosting;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories;
+using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Services;
 using UrzisoftCarflowBackendApp.Entities;
+using UrzisoftCarflowBackendApp.Presenters.Settings;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +33,11 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.Configure<BlobStorageSettings>(builder.Configuration.GetSection(nameof(BlobStorageSettings)));
+var blobStorageSettings = builder.Configuration.GetSection(nameof(BlobStorageSettings)).Get<BlobStorageSettings>();
+
+builder.Services.AddSingleton(blobService => new BlobServiceClient(blobStorageSettings.ConnectionString));
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<IModelRepository, ModelRepository>();
@@ -39,6 +47,7 @@ builder.Services.AddScoped<IFuelRepository, FuelRepository>();
 builder.Services.AddScoped<IGasStationRepository, GasStationRepository>();
 builder.Services.AddScoped<ICarServiceRepository, CarServiceRepository>();
 builder.Services.AddScoped<ICarWashStationRepository, CarWashStationRepository>();
+builder.Services.AddScoped<IImageStorageService, ImageStorageService>();
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
 
 var app = builder.Build();

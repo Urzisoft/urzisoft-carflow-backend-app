@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Cars.Commands
@@ -6,6 +7,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.Commands
     public class UpdateCar : IRequest<Car>
     {
         public int Id { get; set; }
+        public IFormFile File { get; set; }
+        public string ContainerName { get; set; }
         public Brand Brand { get; set; }
         public Model Model { get; set; }
         public string Generation { get; set; }
