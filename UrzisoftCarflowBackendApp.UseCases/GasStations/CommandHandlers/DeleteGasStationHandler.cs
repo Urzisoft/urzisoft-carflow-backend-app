@@ -8,10 +8,12 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
     public class DeleteGasStationHandler : IRequestHandler<DeleteGasStation, GasStation>
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IImageStorageService _imageStorageService;
 
-        public DeleteGasStationHandler(IUnitOfWork unitOfWork)
+        public DeleteGasStationHandler(IUnitOfWork unitOfWork, IImageStorageService imageStorageService)
         {
             _unitOfWork = unitOfWork;
+            _imageStorageService = imageStorageService; 
         }
 
         public async Task<GasStation> Handle(DeleteGasStation request, CancellationToken cancellationToken)
@@ -20,6 +22,9 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 
             if (gasStation is not null)
             {
+                string fileName = gasStation.Name + "-" + gasStation.Address;
+
+                await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.GasStationRepository.Delete(gasStation);
                 await _unitOfWork.Save();
 
