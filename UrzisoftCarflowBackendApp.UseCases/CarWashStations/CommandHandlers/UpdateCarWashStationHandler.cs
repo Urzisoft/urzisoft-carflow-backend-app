@@ -25,7 +25,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
             var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(validName, validAddress);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
-
             if (carWashStation is not null)
             {
                 carWashStation.StorageImageUrl = CustomStorageImageUrl ?? carWashStation.StorageImageUrl;

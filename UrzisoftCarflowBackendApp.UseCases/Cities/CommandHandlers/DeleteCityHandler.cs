@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.Cities.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
 {
@@ -22,7 +23,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
             
             if (city is not null)
             {
-                var fileName = city.Name + "-" + city.County;
+                var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(city.Name, city.County);
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWOrk.CityRepository.Delete(city);

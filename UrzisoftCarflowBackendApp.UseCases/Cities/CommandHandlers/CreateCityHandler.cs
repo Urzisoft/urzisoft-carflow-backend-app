@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.Cities.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
 {
@@ -19,7 +20,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
 
         public async Task<City> Handle(CreateCity request, CancellationToken cancellationToken)
         {
-            var fileName = request.Name + "-" + request.County;
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(request.Name, request.County);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var city = new City
