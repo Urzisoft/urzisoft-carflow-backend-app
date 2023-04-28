@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos;
 using UrzisoftCarflowBackendApp.UseCases.CarServices.Commands;
@@ -43,10 +45,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCarServiceEndpoint([FromBody] CarServiceDto carServiceDto)
+        public async Task<IActionResult> CreateCarServiceEndpoint([FromForm] CarServiceDto carServiceDto, IFormFile File)
         {
             var command = new CreateCarService
             {
+                File = File,
                 Name = carServiceDto.Name,
                 Description = carServiceDto.Description,
                 Address = carServiceDto.Address,
@@ -75,11 +78,12 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{carServiceId}")]
-        public async Task<IActionResult> UpdateCarService(int carServiceId, [FromBody] CarServicePatchDto carServiceDto)
+        public async Task<IActionResult> UpdateCarService(int carServiceId, [FromForm] CarServicePatchDto carServiceDto, IFormFile File)
         {
             var command = new UpdateCarService
             {
                 Id = carServiceId,
+                File = File,
                 Name = carServiceDto.Name,
                 Description = carServiceDto.Description,
                 Address = carServiceDto.Address,
