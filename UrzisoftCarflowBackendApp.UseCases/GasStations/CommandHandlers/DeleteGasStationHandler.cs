@@ -22,7 +22,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 
             if (gasStation is not null)
             {
-                string fileName = gasStation.Name + "-" + gasStation.Address;
+                var fileName = gasStation.Name + "-" + gasStation.Address;
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.GasStationRepository.Delete(gasStation);

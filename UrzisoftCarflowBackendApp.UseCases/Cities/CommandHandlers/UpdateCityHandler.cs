@@ -21,7 +21,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
             var city = await _unitOfWork.CityRepository.GetById(request.Id);
             var validateCityName = request.Name ?? city.Name;
             var validateCityCounty = request.County ?? city.County;
-
             var fileName = validateCityName + "-" + validateCityCounty;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 

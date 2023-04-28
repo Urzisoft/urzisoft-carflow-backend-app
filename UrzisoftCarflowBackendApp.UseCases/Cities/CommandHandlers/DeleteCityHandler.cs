@@ -22,7 +22,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
             
             if (city is not null)
             {
-                string fileName = city.Name + "-" + city.County;
+                var fileName = city.Name + "-" + city.County;
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWOrk.CityRepository.Delete(city);

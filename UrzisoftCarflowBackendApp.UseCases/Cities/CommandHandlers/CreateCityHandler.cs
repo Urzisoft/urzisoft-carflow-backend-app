@@ -19,7 +19,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cities.CommandHandlers
 
         public async Task<City> Handle(CreateCity request, CancellationToken cancellationToken)
         {
-            string fileName = request.Name + "-" + request.County;
+            var fileName = request.Name + "-" + request.County;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var city = new City

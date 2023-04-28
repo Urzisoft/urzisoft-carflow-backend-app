@@ -19,10 +19,9 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
         public async Task<CarService> Handle(UpdateCarService request, CancellationToken cancellationToken)
         {
             var carService = await _unitOfWork.CarServiceRepository.GetById(request.Id);
-            string validName = request.Name ?? carService.Name;
-            string validAddress = request.Address ?? carService.Address;
-            string fileName = validName + "-" + validAddress;
-
+            var validName = request.Name ?? carService.Name;
+            var validAddress = request.Address ?? carService.Address;
+            var fileName = validName + "-" + validAddress;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             if (carService is not null)

@@ -19,7 +19,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
         public async Task<GasStation> Handle(CreateGasStation request, CancellationToken cancellationToken)
         {
 
-            string fileName = request.Name + "-" + request.Address;
+            var fileName = request.Name + "-" + request.Address;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var gasStation = new GasStation

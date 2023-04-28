@@ -22,7 +22,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
 
             if (carWashStation is not null)
             {
-                string fileName = carWashStation.Name + "-" + carWashStation.Address;
+                var fileName = carWashStation.Name + "-" + carWashStation.Address;
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarWashStationRepository.Delete(carWashStation);

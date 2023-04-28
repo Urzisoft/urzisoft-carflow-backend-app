@@ -21,7 +21,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
             var gasStation = await _unitOfWork.GasStationRepository.GetById(request.Id);
             var validateGasStationName = request.Name ?? gasStation.Name;
             var validateGasStationAddress = request.Address ?? request.Address;
-
             var fileName = validateGasStationName + "-" + validateGasStationAddress;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 

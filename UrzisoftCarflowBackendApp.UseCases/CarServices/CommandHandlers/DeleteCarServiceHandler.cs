@@ -22,7 +22,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
             
             if (carService is not null)
             {
-                string fileName = carService.Name + "-" + carService.Address;
+                var fileName = carService.Name + "-" + carService.Address;
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarServiceRepository.Delete(carService);

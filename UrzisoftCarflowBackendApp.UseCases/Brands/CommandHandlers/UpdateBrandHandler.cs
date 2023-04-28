@@ -19,7 +19,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Brands.CommandHandlers
         public async Task<Brand> Handle(UpdateBrand request, CancellationToken cancellationToken)
         {
             var brand = await _unitOfWork.BrandRepository.GetById(request.Id);
-            string fileName = request.Name ?? brand.Name;
+            var fileName = request.Name ?? brand.Name;
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             if (brand is not null)
