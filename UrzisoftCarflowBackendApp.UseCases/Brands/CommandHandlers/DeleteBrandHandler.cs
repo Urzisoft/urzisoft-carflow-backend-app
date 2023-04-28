@@ -24,7 +24,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Brands.CommandHandlers
             {
                 var fileName = brand.Name;
 
-                await _imageStorageService.DeleteImage(fileName, request.ContainerName)
+                await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.BrandRepository.Delete(brand);
                 await _unitOfWork.Save();
 
