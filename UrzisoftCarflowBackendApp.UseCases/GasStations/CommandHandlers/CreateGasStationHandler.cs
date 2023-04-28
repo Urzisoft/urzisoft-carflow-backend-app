@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 {
@@ -19,7 +20,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
         public async Task<GasStation> Handle(CreateGasStation request, CancellationToken cancellationToken)
         {
 
-            var fileName = request.Name + "-" + request.Address;
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(request.Name, request.Address);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var gasStation = new GasStation

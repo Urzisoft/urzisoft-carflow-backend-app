@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 {
@@ -22,7 +23,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 
             if (gasStation is not null)
             {
-                var fileName = gasStation.Name + "-" + gasStation.Address;
+                var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(gasStation.Name, gasStation.Address);
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.GasStationRepository.Delete(gasStation);

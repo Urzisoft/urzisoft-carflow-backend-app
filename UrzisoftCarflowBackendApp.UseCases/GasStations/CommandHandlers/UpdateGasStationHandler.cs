@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.GasStations.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
 {
@@ -21,7 +22,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
             var gasStation = await _unitOfWork.GasStationRepository.GetById(request.Id);
             var validateGasStationName = request.Name ?? gasStation.Name;
             var validateGasStationAddress = request.Address ?? request.Address;
-            var fileName = validateGasStationName + "-" + validateGasStationAddress;
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(validateGasStationName, validateGasStationAddress);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             if (gasStation is not null)
