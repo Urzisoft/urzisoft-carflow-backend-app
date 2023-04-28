@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos;
 using UrzisoftCarflowBackendApp.UseCases.Cars.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Cars.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
@@ -45,10 +47,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCarEndpoint([FromBody] CarDto carDto)
+        public async Task<IActionResult> CreateCarEndpoint([FromForm] CarDto carDto, IFormFile File)
         {
             var command = new CreateCar
             {
+                File = File,
                 Brand = carDto.Brand,
                 Model = carDto.Model,
                 Generation = carDto.Generation,
@@ -60,7 +63,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
-
+                ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 
             var result = await _mediator.Send(command);
@@ -72,7 +75,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{carId}")]
         public async Task<IActionResult> DeleteCar(int carId)
         {
-            var command = new DeleteCar{ CarId = carId };
+            var command = new DeleteCar{ 
+                CarId = carId,
+                ContainerName = AzureContainers.GetCarFlowCarsContainer(),
+            };
+
             await _mediator.Send(command);
 
             return NoContent();
@@ -80,11 +87,12 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{carId}")]
-        public async Task<IActionResult> UpdateCar(int carId, [FromBody] CarPatchDto carDto)
+        public async Task<IActionResult> UpdateCar(int carId, [FromForm] CarPatchDto carDto, IFormFile File)
         {
             var command = new UpdateCar
             {
                 Id = carId,
+                File = File,
                 Brand = carDto.Brand,
                 Model = carDto.Model,
                 Generation = carDto.Generation,
@@ -95,7 +103,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Power = carDto.Power,
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
-                LicensePlate = carDto.LicensePlate
+                LicensePlate = carDto.LicensePlate,
+                ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 
             var result = await _mediator.Send(command);

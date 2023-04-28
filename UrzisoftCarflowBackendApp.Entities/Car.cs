@@ -3,6 +3,7 @@
     public class Car
     {
         public int Id { get; set; }
+        public string StorageImageUrl { get; set; }
         public Brand Brand { get; set; }
         public Model Model { get; set; }
         public string Generation { get; set; }

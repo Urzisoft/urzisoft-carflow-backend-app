@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CityDtos;
 using UrzisoftCarflowBackendApp.UseCases.Cities.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Cities.Queries;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
@@ -45,12 +47,14 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCityEndpoint([FromBody] CityDto cityDto)
+        public async Task<IActionResult> CreateCityEndpoint([FromForm] CityDto cityDto, IFormFile File)
         {
             var command = new CreateCity
             {
+                File = File,
                 Name = cityDto.Name,
                 County = cityDto.County,
+                ContainerName = AzureContainers.GetCarFlowCitiesContainer()
             };
 
             var result = await _mediator.Send(command);
@@ -62,7 +66,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         [Route("{cityId}")]
         public async Task<IActionResult> DeleteCity(int cityId)
         {
-            var command = new DeleteCity { CityId = cityId };
+            var command = new DeleteCity { 
+                CityId = cityId, 
+                ContainerName = AzureContainers.GetCarFlowCitiesContainer()
+            };
+
             await _mediator.Send(command);
 
             return NoContent();
@@ -70,13 +78,15 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{cityId}")]
-        public async Task<IActionResult> UpdateCity(int cityId, [FromBody] CityPatchDto cityDto)
+        public async Task<IActionResult> UpdateCity(int cityId, [FromForm] CityPatchDto cityDto, IFormFile File)
         {
             var command = new UpdateCity
             {
                 Id = cityId,
+                File = File,
                 Name = cityDto.Name,
                 County = cityDto.County,
+                ContainerName = AzureContainers.GetCarFlowCitiesContainer()
             };
 
             var result = await _mediator.Send(command);

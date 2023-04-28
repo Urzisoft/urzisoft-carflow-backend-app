@@ -2,6 +2,7 @@
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.CarServices.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
 {
@@ -9,16 +10,22 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
     {
 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IImageStorageService _imageStorageService;
 
-        public CreateCarServiceHandler(IUnitOfWork unitOfWork)
+        public CreateCarServiceHandler(IUnitOfWork unitOfWork, IImageStorageService imageStorageService)
         {
             _unitOfWork = unitOfWork;
+            _imageStorageService = imageStorageService;
         }
 
         public async Task<CarService> Handle(CreateCarService request, CancellationToken cancellationToken)
         {
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnTwoValues(request.Name, request.Address);
+            var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
+
             var carService = new CarService
             {
+                StorageImageUrl = CustomStorageImageUrl,    
                 Name = request.Name,
                 Description = request.Description,
                 Address = request.Address,
