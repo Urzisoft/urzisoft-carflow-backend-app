@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 {
+    [Index(nameof(LicensePlate), IsUnique = true)]
     public class CarDto
     {
         [Required]

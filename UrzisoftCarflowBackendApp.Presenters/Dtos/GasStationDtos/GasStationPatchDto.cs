@@ -1,7 +1,11 @@
-﻿using UrzisoftCarflowBackendApp.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos
 {
+    [Index(nameof(Name), IsUnique = true)]
+    [Index(nameof(Address), IsUnique = true)]
+    [Index(nameof(Id), IsUnique = true)]
     public class GasStationPatchDto
     {
         public int Id { get; set; }

@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos
 {
+    [Index(nameof(Name), IsUnique = true)]
+    [Index(nameof(Address), IsUnique = true)]
     public class GasStationDto
     {
         [Required]

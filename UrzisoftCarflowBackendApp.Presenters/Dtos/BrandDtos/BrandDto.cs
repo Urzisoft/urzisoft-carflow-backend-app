@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.BrandDtos
 {
+    [Index(nameof(Name), IsUnique = true)]
     public class BrandDto
     {
         [Required]
