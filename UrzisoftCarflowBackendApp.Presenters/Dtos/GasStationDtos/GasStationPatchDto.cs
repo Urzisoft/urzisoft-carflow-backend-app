@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using UrzisoftCarflowBackendApp.Entities;
+﻿using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos
 {
