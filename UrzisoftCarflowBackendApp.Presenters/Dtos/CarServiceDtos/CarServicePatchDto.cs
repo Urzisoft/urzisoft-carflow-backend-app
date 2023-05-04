@@ -5,9 +5,6 @@ using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos
 {
-    [Index(nameof(Name), IsUnique = true)]
-    [Index(nameof(Address), IsUnique = true)]
-    [Index(nameof(Id), IsUnique = true)]
     public class CarServicePatchDto
     {
         public int Id { get; set; }

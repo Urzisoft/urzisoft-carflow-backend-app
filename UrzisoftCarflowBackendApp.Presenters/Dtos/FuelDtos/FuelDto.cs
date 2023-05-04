@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.FuelDtos
 {
-    [Index(nameof(Name), IsUnique = true)]
     public class FuelDto
     {
         [Required]

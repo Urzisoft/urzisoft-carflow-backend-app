@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.UserDtos
 {
-    [Index(nameof(Username), IsUnique = true)]
     public class LoginDto
     {
         [Required]

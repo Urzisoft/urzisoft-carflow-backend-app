@@ -1,5 +1,9 @@
-﻿namespace UrzisoftCarflowBackendApp.Entities
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace UrzisoftCarflowBackendApp.Entities
 {
+    [Index(nameof(LicensePlate), IsUnique = true)]
+    [Index(nameof(Id), IsUnique = true)]
     public class Car
     {
         public int Id { get; set; }

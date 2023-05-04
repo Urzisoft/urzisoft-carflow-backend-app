@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CityDtos
 {
-    [Index(nameof(Name), IsUnique = true)]
     public class CityDto
     {
         [Required]
