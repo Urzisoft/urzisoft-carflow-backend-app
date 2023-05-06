@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.Users.Commands;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 {
@@ -29,14 +30,14 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
                 {
                     return new StandardResponse
                     {
-                        Status = "Success",
+                        Status = StandardResponseValues.SUCCESS,
                         Message = "Password updated succesfully!"
                     };
                 } else
                 {
                     return new StandardResponse
                     {
-                        Status = "Error",
+                        Status = StandardResponseValues.ERROR,
                         Message = "Error when updating password!"
                     };
                 }
@@ -45,7 +46,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 
             return new StandardResponse
             {
-                Status = "Error",
+                Status = StandardResponseValues.ERROR,
                 Message = "Unable to find user!"
             };
         }

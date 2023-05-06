@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using UrzisoftCarflowBackendApp.Entities;
 using UrzisoftCarflowBackendApp.UseCases.Users.Commands;
+using UrzisoftCarflowBackendApp.UseCases.Utils;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 {
@@ -24,12 +25,12 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
             {
                 return new StandardResponse
                 {
-                    Status = "Error",
+                    Status = StandardResponseValues.ERROR,
                     Message = "User already exists!"
                 };
             }
 
-            User user = new User()
+            User user = new()
             {
                 Email = request.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -42,7 +43,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
             {
                 return new StandardResponse
                 {
-                    Status = "Error",
+                    Status = StandardResponseValues.ERROR,
                     Message = "User creation failed! Please check user details and try again."
                 };
             }
@@ -59,7 +60,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 
             return new StandardResponse
             {
-                Status = "Success",
+                Status = StandardResponseValues.SUCCESS,
                 Message = "User created successfully!"
             };
         }
