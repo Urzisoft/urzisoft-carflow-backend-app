@@ -33,8 +33,8 @@ public class DataContext : IdentityDbContext<User>
         builder.Entity<CarWashStation>().HasIndex(carWash => carWash.Address).IsUnique();
         builder.Entity<City>().HasIndex(city => city.Name).IsUnique();
         builder.Entity<Fuel>().HasIndex(fuel => fuel.Name).IsUnique();
-        // builder.Entity<GasStation>().HasIndex(gasStation => gasStation.Address).IsUnique();
-        // builder.Entity<Model>().HasIndex(model => model.Name).IsUnique();
+        builder.Entity<GasStation>().HasIndex(gasStation => gasStation.Address).IsUnique();
+        builder.Entity<Model>().HasIndex(model => model.Name).IsUnique();
 
         base.OnModelCreating(builder);
     }
