@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230506211850_add-price-as-list-in-fuels")]
+    partial class addpriceaslistinfuels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -433,7 +435,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("FuelId")
+                    b.Property<int>("FuelId")
                         .HasColumnType("int");
 
                     b.Property<int>("Value")
@@ -443,7 +445,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasIndex("FuelId");
 
-                    b.ToTable("Prices");
+                    b.ToTable("Price");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.User", b =>
@@ -610,9 +612,13 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Price", b =>
                 {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", null)
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", "Fuel")
                         .WithMany("Price")
-                        .HasForeignKey("FuelId");
+                        .HasForeignKey("FuelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Fuel");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarService", b =>

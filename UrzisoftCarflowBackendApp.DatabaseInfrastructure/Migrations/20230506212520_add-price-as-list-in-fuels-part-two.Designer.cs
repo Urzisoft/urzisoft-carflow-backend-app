@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230506212520_add-price-as-list-in-fuels-part-two")]
+    partial class addpriceaslistinfuelsparttwo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -443,7 +445,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasIndex("FuelId");
 
-                    b.ToTable("Prices");
+                    b.ToTable("Price");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.User", b =>
