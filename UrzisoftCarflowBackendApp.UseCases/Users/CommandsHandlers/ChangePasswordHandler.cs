@@ -37,7 +37,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
         public async Task<StandardResponse> Handle(ChangePassword request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
-            string newPasswordHash = HashPassword(request.NewPassword);
+            string newPasswordHash = _userManager.PasswordHasher.HashPassword(user, request.NewPassword);
 
 
             if (user is not null)
@@ -45,7 +45,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
                 user.PasswordHash = newPasswordHash;
                 var result = await _userManager.UpdateAsync(user);
 
-                if (result is not null)
+                if (result.Succeeded)
                 {
                     return new StandardResponse
                     {
