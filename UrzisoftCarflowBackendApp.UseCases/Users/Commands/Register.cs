@@ -3,7 +3,7 @@ using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Users.Commands
 {
-    public class Register : IRequest<RegisterResponse>
+    public class Register : IRequest<StandardResponse>
     {
         public string Username { get; set; }
         public string Email { get; set; }

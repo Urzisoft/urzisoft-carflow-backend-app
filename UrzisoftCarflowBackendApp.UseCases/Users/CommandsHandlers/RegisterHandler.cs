@@ -5,7 +5,7 @@ using UrzisoftCarflowBackendApp.UseCases.Users.Commands;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 {
-    public class RegisterHandler : IRequestHandler<Register, RegisterResponse>
+    public class RegisterHandler : IRequestHandler<Register, StandardResponse>
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -16,13 +16,13 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
             _roleManager = roleManager;
         }
 
-        public async Task<RegisterResponse> Handle(Register request, CancellationToken cancellationToken)
+        public async Task<StandardResponse> Handle(Register request, CancellationToken cancellationToken)
         {
             var userExists = await _userManager.FindByNameAsync(request.Username);
 
             if (userExists != null)
             {
-                return new RegisterResponse
+                return new StandardResponse
                 {
                     Status = "Error",
                     Message = "User already exists!"
@@ -40,7 +40,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
             
             if (!result.Succeeded)
             {
-                return new RegisterResponse
+                return new StandardResponse
                 {
                     Status = "Error",
                     Message = "User creation failed! Please check user details and try again."
@@ -57,7 +57,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
                 await _userManager.AddToRoleAsync(user, UserRoles.Active);
             }
 
-            return new RegisterResponse
+            return new StandardResponse
             {
                 Status = "Success",
                 Message = "User created successfully!"
