@@ -54,6 +54,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
 
                 return new JwtResponse
                 {
+                    Username = user.UserName,
+                    UserId = user.Id,
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                     Expiration = token.ValidTo
                 };
