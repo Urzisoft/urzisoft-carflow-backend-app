@@ -25,6 +25,7 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<GasStation> GasStations { get; set; }
     public DbSet<Model> Models { get; set; }
     public DbSet<User> TheUsers { get; set; }
+    public DbSet<Price> Prices { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

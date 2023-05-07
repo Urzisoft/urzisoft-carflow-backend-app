@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.FuelDtos
 {
@@ -13,7 +15,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.FuelDtos
 
         public string Quality { get; set; }
 
-        public double Price { get; set; }
+        public List<Price> Price { get; set; }
     }
 }
 
