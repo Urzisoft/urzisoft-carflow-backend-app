@@ -25,5 +25,18 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<GasStation> GasStations { get; set; }
     public DbSet<Model> Models { get; set; }
     public DbSet<User> TheUsers { get; set; }
-    public DbSet<GasStation> gasStations { get; set; }
+    public DbSet<Price> Prices { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<Brand>().HasIndex(brand => brand.Name).IsUnique();
+        builder.Entity<CarService>().HasIndex(carService => carService.Address).IsUnique();
+        builder.Entity<CarWashStation>().HasIndex(carWash => carWash.Address).IsUnique();
+        builder.Entity<City>().HasIndex(city => city.Name).IsUnique();
+        builder.Entity<Fuel>().HasIndex(fuel => fuel.Name).IsUnique();
+        builder.Entity<GasStation>().HasIndex(gasStation => gasStation.Address).IsUnique();
+        builder.Entity<Model>().HasIndex(model => model.Name).IsUnique();
+
+        base.OnModelCreating(builder);
+    }
 }

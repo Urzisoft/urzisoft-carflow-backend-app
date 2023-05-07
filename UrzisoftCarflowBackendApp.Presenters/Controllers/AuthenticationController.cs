@@ -47,5 +47,20 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
             return result == null ? Unauthorized() : Ok(result);
         }
+
+        [HttpPost]
+        [Route("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
+        {
+            var command = new ChangePassword
+            {
+                Username = changePasswordDto.Username,
+                NewPassword = changePasswordDto.NewPassword,
+            };
+
+            var result = await _mediator.Send(command);
+
+            return result == null ? Unauthorized() : Ok(result);
+        }
     }
 }

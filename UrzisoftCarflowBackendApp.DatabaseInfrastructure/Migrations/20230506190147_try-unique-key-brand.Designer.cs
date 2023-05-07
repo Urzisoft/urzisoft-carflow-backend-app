@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230506190147_try-unique-key-brand")]
+    partial class tryuniquekeybrand
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,7 +250,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -260,10 +262,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Address")
-                        .IsUnique()
-                        .HasFilter("[Address] IS NOT NULL");
 
                     b.ToTable("CarServices");
                 });
@@ -277,7 +275,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CityId")
                         .HasColumnType("int");
@@ -302,10 +300,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Address")
-                        .IsUnique()
-                        .HasFilter("[Address] IS NOT NULL");
-
                     b.HasIndex("CityId");
 
                     b.ToTable("CarWashStations");
@@ -323,16 +317,12 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StorageImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Cities");
                 });
@@ -349,7 +339,10 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<string>("Quality")
                         .HasColumnType("nvarchar(max)");
@@ -358,10 +351,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Fuels");
                 });
@@ -375,7 +364,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CityId")
                         .HasColumnType("int");
@@ -394,15 +383,11 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Address")
-                        .IsUnique()
-                        .HasFilter("[Address] IS NOT NULL");
-
                     b.HasIndex("CityId");
 
                     b.HasIndex("FuelId");
 
-                    b.ToTable("GasStations");
+                    b.ToTable("GasStation");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Model", b =>
@@ -414,36 +399,11 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Models");
-                });
-
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Price", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("FuelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuelId");
-
-                    b.ToTable("Prices");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.User", b =>
@@ -608,21 +568,9 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Navigation("Fuel");
                 });
 
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Price", b =>
-                {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", null)
-                        .WithMany("Price")
-                        .HasForeignKey("FuelId");
-                });
-
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarService", b =>
                 {
                     b.Navigation("BrandsList");
-                });
-
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Fuel", b =>
-                {
-                    b.Navigation("Price");
                 });
 #pragma warning restore 612, 618
         }
