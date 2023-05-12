@@ -11,7 +11,7 @@ using UrzisoftCarflowBackendApp.UseCases.Utils;
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
 
-    [Route("api/carWashStation")]
+    [Route("api/car-wash-station")]
     [ApiController]
     [Authorize(Policy = "ActivePolicy")]
 
