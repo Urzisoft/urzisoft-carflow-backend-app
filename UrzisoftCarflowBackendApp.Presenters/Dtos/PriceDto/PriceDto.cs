@@ -5,7 +5,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.PriceDto
     public class PriceDto
     {
         [Required]
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         [Required]
         public string Fuel { get; set; }
