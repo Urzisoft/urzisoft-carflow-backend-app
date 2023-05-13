@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos;
@@ -17,12 +18,10 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
     public class GasStationController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IImageStorageService _imageStorageService;
 
         public GasStationController(IMediator mediator, IImageStorageService imageStorageService)
         {
             _mediator = mediator;
-            _imageStorageService = imageStorageService;
         }
 
         [HttpGet]
@@ -49,10 +48,11 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateGasStationEndpoint([FromBody] GasStationDto gasStationDto)
+        public async Task<IActionResult> CreateGasStationEndpoint([FromForm] GasStationDto gasStationDto, IFormFile File)
         {
             var command = new CreateGasStation
             {
+                File = File,
                 Name = gasStationDto.Name,
                 FuelId = gasStationDto.FuelId,
                 CityId = gasStationDto.CityId,
@@ -81,11 +81,12 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 
         [HttpPatch]
         [Route("{gasStationId}")]
-        public async Task<IActionResult> UpdateGasStation(int gasStationId, [FromBody] GasStationPatchDto gasStationDto)
+        public async Task<IActionResult> UpdateGasStation(int gasStationId, [FromForm] GasStationPatchDto gasStationDto, IFormFile File)
         {
             var command = new UpdateGasStation
             {
                 Id = gasStationId,
+                File = File,
                 Name = gasStationDto.Name,
                 FuelId = gasStationDto.FuelId,
                 CityId = gasStationDto.CityId,
