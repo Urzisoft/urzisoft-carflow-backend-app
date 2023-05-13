@@ -10,6 +10,7 @@
         public IGasStationRepository GasStationRepository { get; }
         public ICarWashStationRepository CarWashStationRepository { get; }
         public ICarServiceRepository CarServiceRepository { get; }
+        public IPriceRepository PriceRepository { get;  }
         Task Save();
     }
 }

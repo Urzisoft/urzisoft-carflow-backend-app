@@ -34,8 +34,5 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories
         {
             _dataContext.Brands.Remove(obj);
         }
-
-
-
     }
 }

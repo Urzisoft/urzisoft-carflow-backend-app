@@ -6,7 +6,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.BrandDtos
     {
         public string Name { get; set; }
 
-        [MinLength(1)]
+        [MinLength(10)]
         public string Description { get; set; }
     }
 }

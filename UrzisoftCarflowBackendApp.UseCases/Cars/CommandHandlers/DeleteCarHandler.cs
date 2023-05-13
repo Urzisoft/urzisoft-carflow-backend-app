@@ -20,10 +20,12 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
         public async Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
         {
             var car = await _unitOfWork.CarRepository.GetById(request.CarId);
-            
+            var brand = await _unitOfWork.BrandRepository.GetById(car.BrandId);
+            var model = await _unitOfWork.ModelRepository.GetById(car.ModelId);
+
             if (car is not null)
             {
-                var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(car.Brand.Name, car.Model.Name, car.LicensePlate);
+                var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(brand.Name, model.Name, car.LicensePlate);
 
                 await _imageStorageService.DeleteImage(fileName, request.ContainerName);
                 await _unitOfWork.CarRepository.Delete(car);

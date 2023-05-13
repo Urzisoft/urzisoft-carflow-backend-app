@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos;
@@ -52,8 +52,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new CreateCar
             {
                 File = File,
-                Brand = carDto.Brand,
-                Model = carDto.Model,
+                BrandId = carDto.BrandId,
+                ModelId = carDto.ModelId,
                 Generation = carDto.Generation,
                 Year = carDto.Year,
                 GasType = carDto.GasType,
@@ -63,6 +63,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
+                Username = carDto.Username,
                 ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 
@@ -93,8 +94,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             {
                 Id = carId,
                 File = File,
-                Brand = carDto.Brand,
-                Model = carDto.Model,
+                BrandId = carDto.BrandId,
+                ModelId = carDto.ModelId,
                 Generation = carDto.Generation,
                 Year = carDto.Year,
                 GasType = carDto.GasType,

@@ -4,7 +4,11 @@
     {
         public int Id { get; set; }
         public string StorageImageUrl { get; set; }
+        public string Username { get; set; }
+        public User User { get; set; } 
+        public int BrandId { get; set; }
         public Brand Brand { get; set; }
+        public int ModelId { get; set; }
         public Model Model { get; set; }
         public string Generation { get; set; }
         public int Year { get; set; }

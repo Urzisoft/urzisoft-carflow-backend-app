@@ -51,6 +51,7 @@ builder.Services.AddScoped<IFuelRepository, FuelRepository>();
 builder.Services.AddScoped<IGasStationRepository, GasStationRepository>();
 builder.Services.AddScoped<ICarServiceRepository, CarServiceRepository>();
 builder.Services.AddScoped<ICarWashStationRepository, CarWashStationRepository>();
+builder.Services.AddScoped<IPriceRepository, PriceRepository>();
 builder.Services.AddScoped<IImageStorageService, ImageStorageService>();
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
 
