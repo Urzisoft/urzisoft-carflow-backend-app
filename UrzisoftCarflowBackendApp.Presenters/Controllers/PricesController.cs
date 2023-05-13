@@ -2,17 +2,16 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using UrzisoftCarflowBackendApp.Presenters.Dtos.ModelDtos;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.PriceDto;
-using UrzisoftCarflowBackendApp.UseCases.Models.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Prices.Commands;
 using UrzisoftCarflowBackendApp.UseCases.Prices.Queries;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
-    [Route("api/[prices]")]
+    [Route("api/prices")]
     [ApiController]
     [Authorize(Policy = "ActivePolicy")]
+
     public class PricesController : ControllerBase
     {
         private readonly IMediator _mediator;
