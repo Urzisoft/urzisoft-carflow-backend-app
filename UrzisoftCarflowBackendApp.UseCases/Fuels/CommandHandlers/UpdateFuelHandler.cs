@@ -24,7 +24,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.Fuels.CommandHandlers
                 fuel.Description = request.Description ?? fuel.Description;
                 fuel.Type = request.Type ?? fuel.Type;
                 fuel.Quality = request.Quality ?? fuel.Quality;
-                fuel.Price = request.Price ?? fuel.Price;
 
                 await _unitOfWork.Save();
 

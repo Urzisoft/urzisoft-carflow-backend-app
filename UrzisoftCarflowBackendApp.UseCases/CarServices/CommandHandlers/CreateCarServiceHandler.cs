@@ -28,8 +28,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
                 StorageImageUrl = CustomStorageImageUrl,    
                 Name = request.Name,
                 Description = request.Description,
-                Address = request.Address,
-                BrandsListIds = request.BrandsListIds,      
+                Address = request.Address, 
             };
 
             await _unitOfWork.CarServiceRepository.Create(carService);

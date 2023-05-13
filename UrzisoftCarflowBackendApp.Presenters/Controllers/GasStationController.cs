@@ -54,8 +54,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new CreateGasStation
             {
                 Name = gasStationDto.Name,
-                Fuel = gasStationDto.Fuel,
-                City = gasStationDto.City,
+                FuelId = gasStationDto.FuelId,
+                CityId = gasStationDto.CityId,
                 Address = gasStationDto.Address,  
                 Rank = gasStationDto.Rank,
                 ContainerName = AzureContainers.GetCarFlowGasStations(),
@@ -87,8 +87,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             {
                 Id = gasStationId,
                 Name = gasStationDto.Name,
-                Fuel = gasStationDto.Fuel,
-                City = gasStationDto.City,
+                FuelId = gasStationDto.FuelId,
+                CityId = gasStationDto.CityId,
                 Address = gasStationDto.Address,
                 Rank = gasStationDto.Rank,
                 ContainerName = AzureContainers.GetCarFlowGasStations()

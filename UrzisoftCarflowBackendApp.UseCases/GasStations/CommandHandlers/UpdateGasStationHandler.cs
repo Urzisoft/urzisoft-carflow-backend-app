@@ -29,8 +29,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.GasStations.CommandHandlers
             {
                 gasStation.StorageImageUrl = CustomStorageImageUrl ?? gasStation.StorageImageUrl;
                 gasStation.Name = request.Name ?? gasStation.Name;
-                gasStation.Fuel = request.Fuel ?? gasStation.Fuel;
-                gasStation.City = request.City ?? gasStation.City;
+                gasStation.FuelId = request.FuelId ?? gasStation.FuelId;
+                gasStation.CityId = request.CityId ?? gasStation.CityId;
                 gasStation.Address = request.Address ?? gasStation.Address;
                 gasStation.Rank = request.Rank ?? gasStation.Rank;
 

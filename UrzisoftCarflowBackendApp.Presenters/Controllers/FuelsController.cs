@@ -53,7 +53,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Description = fuelDto.Description,
                 Type = fuelDto.Type,
                 Quality = fuelDto.Quality,
-                Price = fuelDto.Price,
             };
 
             var result = await _mediator.Send(command);
@@ -82,7 +81,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Description = fuelDto.Description,
                 Type = fuelDto.Type,
                 Quality = fuelDto.Quality,
-                Price = fuelDto.Price,
             };
 
             var result = await _mediator.Send(command);
