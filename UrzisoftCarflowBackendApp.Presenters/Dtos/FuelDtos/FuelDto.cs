@@ -20,6 +20,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.FuelDtos
         public string Quality { get; set; }
 
         [Required]
-        public List<Price> Price { get; set; }
+        public List<int> PricesIds { get; set; }
     }
 }

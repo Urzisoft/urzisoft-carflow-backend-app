@@ -9,10 +9,10 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.GasStationDtos
         public string Name { get; set; }
 
         [Required]
-        public Fuel Fuel { get; set; }
+        public int FuelId { get; set; }
 
         [Required]
-        public City City { get; set; }
+        public int CityId { get; set; }
 
         [Required]
         public string Address { get; set; }

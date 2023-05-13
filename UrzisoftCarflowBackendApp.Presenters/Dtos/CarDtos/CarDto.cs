@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 {
     public class CarDto
     {
         [Required]
-        public Brand Brand { get; set; }
+        public int BrandId { get; set; }
 
         [Required]
-        public Model Model { get; set; }
+        public int ModelId { get; set; }
 
         [Required]
         public string Generation { get; set; }
@@ -21,8 +20,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
         public string GasType { get; set; }
 
         [Required]
-        [MaxLength(999999)]
-        [MinLength(1)]
         public string Mileage { get; set; }
         
         public string Gearbox { get; set; }
