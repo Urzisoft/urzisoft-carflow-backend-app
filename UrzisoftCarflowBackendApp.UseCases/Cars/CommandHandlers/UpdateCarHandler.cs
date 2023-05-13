@@ -20,9 +20,13 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
         public async Task<Car> Handle(UpdateCar request, CancellationToken cancellationToken)
         {
             var car = await _unitOfWork.CarRepository.GetById(request.Id);
-            var validBrandName = request.Brand?.Name ?? car.Brand.Name;
-            var validModelName = request.Model?.Name ?? car.Model.Name;
+            var brand = await _unitOfWork.BrandRepository.GetById(car.BrandId);
+            var model = await _unitOfWork.ModelRepository.GetById(car.ModelId);
+
+            var validBrandName = brand?.Name ?? car.Brand.Name;
+            var validModelName = model?.Name ?? car.Model.Name;
             var validLicensePlate = request.LicensePlate ?? car.LicensePlate;
+
             var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(validBrandName, validModelName, validLicensePlate);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
@@ -30,8 +34,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
             {
                 car.StorageImageUrl = CustomStorageImageUrl ?? car.StorageImageUrl;
                 car.Generation = request.Generation ?? car.Generation;
-                car.Brand = request.Brand ?? car.Brand;
-                car.Model =  request.Model ?? car.Model;    
+                car.BrandId = request.BrandId ?? car.BrandId;
+                car.ModelId =  request.ModelId ?? car.ModelId;    
                 car.Year = request.Year ?? car.Year;
                 car.GasType = request.GasType ?? car.GasType;
                 car.Mileage = request.Mileage ?? car.Mileage;

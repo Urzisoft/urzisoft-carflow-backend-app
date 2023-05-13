@@ -8,8 +8,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.Commands
     {
         public IFormFile File { get; set; }
         public string ContainerName { get; set; }
-        public Brand Brand { get; set; }
-        public Model Model { get; set; }
+        public int BrandId { get; set; }
+        public int ModelId { get; set; }
         public string Generation { get; set; }
         public int Year { get; set; }
         public string GasType { get; set; }
