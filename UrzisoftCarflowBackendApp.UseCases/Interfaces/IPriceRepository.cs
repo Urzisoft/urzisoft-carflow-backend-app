@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UrzisoftCarflowBackendApp.Entities;
+﻿using UrzisoftCarflowBackendApp.Entities;
 
 namespace UrzisoftCarflowBackendApp.UseCases.Interfaces
 {
-    public class IPriceRepository
+    public interface IPriceRepository
     {
-        Task Create(Brand obj);
-        Task<List<Brand>> GetAll();
-        Task<Brand> GetById(int id);
-        Task Delete(Brand obj);
+        Task Create(Price obj);
+        Task<List<Price>> GetAll();
+        Task<Price> GetById(int id);
+        Task Delete(Price obj);
     }
 }
