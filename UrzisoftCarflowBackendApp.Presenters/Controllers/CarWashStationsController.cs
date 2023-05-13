@@ -11,7 +11,7 @@ using UrzisoftCarflowBackendApp.UseCases.Utils;
 namespace UrzisoftCarflowBackendApp.Presenters.Controllers
 {
 
-    [Route("api/carWashStation")]
+    [Route("api/car-wash-stations")]
     [ApiController]
     [Authorize(Policy = "ActivePolicy")]
 
@@ -56,7 +56,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Name = carWashStationDto.Name,
                 StandardPrice = carWashStationDto.StandardPrice,
                 PremiumPrice = carWashStationDto.PremiumPrice,
-                City = carWashStationDto.City,
+                CityId = carWashStationDto.CityId,
                 Address = carWashStationDto.Address,
                 Rank = carWashStationDto.Rank,
                 IsSelfWash = carWashStationDto.IsSelfWash,
@@ -92,7 +92,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Name = carWashStationDto.Name,
                 StandardPrice = carWashStationDto.StandardPrice,
                 PremiumPrice = carWashStationDto.PremiumPrice,
-                City = carWashStationDto.City,
+                CityId = carWashStationDto.CityId,
                 Address = carWashStationDto.Address,
                 Rank = carWashStationDto.Rank,
                 IsSelfWash = carWashStationDto.IsSelfWash,

@@ -31,7 +31,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
                 carWashStation.Name = request.Name ?? carWashStation.Name;
                 carWashStation.StandardPrice = request.StandardPrice ?? carWashStation.StandardPrice;
                 carWashStation.PremiumPrice = request.PremiumPrice ?? carWashStation.PremiumPrice;
-                carWashStation.City = request.City ?? carWashStation.City;
+                carWashStation.CityId = request.CityId ?? carWashStation.CityId;
                 carWashStation.Address = request.Address ?? carWashStation.Address;
                 carWashStation.Rank = request.Rank ?? carWashStation.Rank;
                 carWashStation.IsSelfWash = request.IsSelfWash ?? carWashStation.IsSelfWash;

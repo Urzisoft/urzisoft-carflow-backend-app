@@ -10,6 +10,5 @@ namespace UrzisoftCarflowBackendApp.UseCases.Fuels.Commands
         public string Description { get; set; }
         public string Type { get; set; }
         public string Quality { get; set; }
-        public List<Price> Price { get; set; }
     }
 }

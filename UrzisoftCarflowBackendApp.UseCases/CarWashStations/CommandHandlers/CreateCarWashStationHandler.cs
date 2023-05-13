@@ -28,7 +28,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarWashStations.CommandHandlers
                 Name = request.Name,
                 StandardPrice = request.StandardPrice,
                 PremiumPrice = request.PremiumPrice,
-                City = request.City,
+                CityId = request.CityId,
                 Address = request.Address,
                 Rank = request.Rank,
                 IsSelfWash = request.IsSelfWash,

@@ -163,9 +163,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CarServiceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -176,8 +173,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CarServiceId");
 
                     b.HasIndex("Name")
                         .IsUnique()
@@ -194,7 +189,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("BrandId")
+                    b.Property<int>("BrandId")
                         .HasColumnType("int");
 
                     b.Property<string>("DriveWheel")
@@ -218,13 +213,19 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Mileage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ModelId")
+                    b.Property<int>("ModelId")
                         .HasColumnType("int");
 
                     b.Property<int>("Power")
                         .HasColumnType("int");
 
                     b.Property<string>("StorageImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Year")
@@ -235,6 +236,8 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.HasIndex("BrandId");
 
                     b.HasIndex("ModelId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Cars");
                 });
@@ -253,6 +256,9 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MainBrandId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -264,6 +270,8 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.HasIndex("Address")
                         .IsUnique()
                         .HasFilter("[Address] IS NOT NULL");
+
+                    b.HasIndex("MainBrandId");
 
                     b.ToTable("CarServices");
                 });
@@ -279,7 +287,7 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsSelfWash")
@@ -377,10 +385,10 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FuelId")
+                    b.Property<int>("FuelId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -433,15 +441,16 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("FuelId")
-                        .HasColumnType("int");
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
+                    b.Property<string>("Fuel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FuelId");
 
                     b.ToTable("Prices");
                 });
@@ -562,33 +571,49 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Brand", b =>
-                {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.CarService", null)
-                        .WithMany("BrandsList")
-                        .HasForeignKey("CarServiceId");
-                });
-
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Car", b =>
                 {
                     b.HasOne("UrzisoftCarflowBackendApp.Entities.Brand", "Brand")
                         .WithMany()
-                        .HasForeignKey("BrandId");
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("UrzisoftCarflowBackendApp.Entities.Model", "Model")
                         .WithMany()
-                        .HasForeignKey("ModelId");
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Brand");
 
                     b.Navigation("Model");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarService", b =>
+                {
+                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Brand", "MainBrand")
+                        .WithMany()
+                        .HasForeignKey("MainBrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MainBrand");
                 });
 
             modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarWashStation", b =>
                 {
                     b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "City")
                         .WithMany()
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("City");
                 });
@@ -597,32 +622,19 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                 {
                     b.HasOne("UrzisoftCarflowBackendApp.Entities.City", "City")
                         .WithMany()
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", "Fuel")
                         .WithMany()
-                        .HasForeignKey("FuelId");
+                        .HasForeignKey("FuelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("City");
 
                     b.Navigation("Fuel");
-                });
-
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Price", b =>
-                {
-                    b.HasOne("UrzisoftCarflowBackendApp.Entities.Fuel", null)
-                        .WithMany("Price")
-                        .HasForeignKey("FuelId");
-                });
-
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.CarService", b =>
-                {
-                    b.Navigation("BrandsList");
-                });
-
-            modelBuilder.Entity("UrzisoftCarflowBackendApp.Entities.Fuel", b =>
-                {
-                    b.Navigation("Price");
                 });
 #pragma warning restore 612, 618
         }

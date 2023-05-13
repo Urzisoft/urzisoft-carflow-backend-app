@@ -20,14 +20,16 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
 
         public async Task<Car> Handle(CreateCar request, CancellationToken cancellationToken)
         {
-            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(request.Brand.Name, request.Model.Name, request.LicensePlate);
+            var brand = await _unitOfWork.BrandRepository.GetById(request.BrandId);
+            var model = await _unitOfWork.ModelRepository.GetById(request.ModelId);
+            var fileName = AzureBlobFileNameBuilder.GetFileNameBasedOnThreeValues(brand.Name, model.Name, request.LicensePlate);
             var CustomStorageImageUrl = await _imageStorageService.UploadImage(fileName, request.File, request.ContainerName);
 
             var car = new Car
             {
                 StorageImageUrl = CustomStorageImageUrl,
-                Model = request.Model,
-                Brand = request.Brand,
+                ModelId = request.ModelId,
+                BrandId = request.BrandId,
                 Generation = request.Generation,
                 Year = request.Year,
                 GasType = request.GasType,
@@ -37,6 +39,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
                 EngineSize = request.EngineSize,
                 DriveWheel = request.DriveWheel,
                 LicensePlate = request.LicensePlate,
+                Username = request.Username,
             };
 
             await _unitOfWork.CarRepository.Create(car);
