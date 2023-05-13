@@ -15,13 +15,13 @@ namespace UrzisoftCarflowBackendApp.UseCases.Prices.CommandsHandlers
         }
 
 
-        public Task<Price> Handle(DeletePrice request, CancellationToken cancellationToken)
+        public async Task<Price> Handle(DeletePrice request, CancellationToken cancellationToken)
         {
             var price = await _unitOfWOrk.PriceRepository.GetById(request.PriceId);
 
             if (price is not null)
             {
-                await _unitOfWOrk.PriceRepository.Delete(model);
+                await _unitOfWOrk.PriceRepository.Delete(price);
                 await _unitOfWOrk.Save();
 
                 return price;
