@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string StorageImageUrl { get; set; }
-        public string UserId { get; set; }
+        public string Username { get; set; }
         public User User { get; set; } 
         public int BrandId { get; set; }
         public Brand Brand { get; set; }

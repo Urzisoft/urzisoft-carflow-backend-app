@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos;
@@ -63,6 +63,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 EngineSize = carDto.EngineSize,
                 DriveWheel = carDto.DriveWheel,
                 LicensePlate = carDto.LicensePlate,
+                Username = carDto.Username,
                 ContainerName = AzureContainers.GetCarFlowCarsContainer(),
             };
 

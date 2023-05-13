@@ -39,6 +39,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.CommandHandlers
                 EngineSize = request.EngineSize,
                 DriveWheel = request.DriveWheel,
                 LicensePlate = request.LicensePlate,
+                Username = request.Username,
             };
 
             await _unitOfWork.CarRepository.Create(car);

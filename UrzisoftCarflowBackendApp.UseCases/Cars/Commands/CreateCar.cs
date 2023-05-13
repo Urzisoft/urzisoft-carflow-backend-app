@@ -7,6 +7,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.Cars.Commands
     public class CreateCar : IRequest<Car>
     {
         public IFormFile File { get; set; }
+        public string Username { get; set; }
         public string ContainerName { get; set; }
         public int BrandId { get; set; }
         public int ModelId { get; set; }

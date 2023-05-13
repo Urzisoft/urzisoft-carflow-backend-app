@@ -11,6 +11,9 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
         public int ModelId { get; set; }
 
         [Required]
+        public string Username { get; set; }
+
+        [Required]
         public string Generation { get; set; }
 
         [Required]
