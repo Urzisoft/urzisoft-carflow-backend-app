@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 
@@ -11,9 +12,10 @@ using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230513103315_update-prices-entitie")]
+    partial class updatepricesentitie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -437,9 +439,6 @@ namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Fuel")
                         .HasColumnType("nvarchar(max)");
