@@ -5,9 +5,9 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarDtos
 {
     public class CarPatchDto
     {
-        public Brand Brand { get; set; }
+        public int BrandId { get; set; }
 
-        public Model Model { get; set; }
+        public int ModelId { get; set; }
 
         public string Generation { get; set; }
 

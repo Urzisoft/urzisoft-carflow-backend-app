@@ -12,6 +12,6 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.Commands
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
-        public List<Brand> BrandsList { get; set; }
+        public List<int> BrandsListIds { get; set; }
     }
 }

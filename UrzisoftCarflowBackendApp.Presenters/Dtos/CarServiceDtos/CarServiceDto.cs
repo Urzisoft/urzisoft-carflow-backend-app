@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos
 
@@ -12,6 +11,6 @@ namespace UrzisoftCarflowBackendApp.Presenters.Dtos.CarServiceDtos
 
         public string Address { get; set; }
 
-        public List<int> BrandsIds { get; set; }
+        public List<int> BrandsListIds { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
                 carService.Name = request.Name ?? carService.Name;
                 carService.Address = request.Address ?? carService.Address;
                 carService.Description = request.Description ?? carService.Description;
-                carService.BrandsList = request.BrandsList ?? carService.BrandsList;
+                carService.BrandsListIds = request.BrandsListIds ?? carService.BrandsListIds;
 
                 await _unitOfWork.Save();
 

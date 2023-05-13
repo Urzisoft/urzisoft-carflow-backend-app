@@ -52,8 +52,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             var command = new CreateCar
             {
                 File = File,
-                Brand = carDto.Brand,
-                Model = carDto.Model,
+                BrandId = carDto.BrandId,
+                ModelId = carDto.ModelId,
                 Generation = carDto.Generation,
                 Year = carDto.Year,
                 GasType = carDto.GasType,
@@ -93,8 +93,8 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
             {
                 Id = carId,
                 File = File,
-                Brand = carDto.Brand,
-                Model = carDto.Model,
+                BrandId = carDto.BrandId,
+                ModelId = carDto.ModelId,
                 Generation = carDto.Generation,
                 Year = carDto.Year,
                 GasType = carDto.GasType,
