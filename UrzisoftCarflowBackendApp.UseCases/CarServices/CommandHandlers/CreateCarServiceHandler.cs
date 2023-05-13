@@ -29,6 +29,7 @@ namespace UrzisoftCarflowBackendApp.UseCases.CarServices.CommandHandlers
                 Name = request.Name,
                 Description = request.Description,
                 Address = request.Address, 
+                MainBrandId = request.MainBrandId
             };
 
             await _unitOfWork.CarServiceRepository.Create(carService);

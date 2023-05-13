@@ -56,6 +56,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Name = carServiceDto.Name,
                 Description = carServiceDto.Description,
                 Address = carServiceDto.Address,
+                MainBrandId = carServiceDto.MainBrandId,
                 ContainerName = AzureContainers.GetCarFlowCarServicesContainer()
             };
 
@@ -89,6 +90,7 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
                 Name = carServiceDto.Name,
                 Description = carServiceDto.Description,
                 Address = carServiceDto.Address,
+                MainBrandId = carServiceDto.MainBrandId,
                 ContainerName = AzureContainers.GetCarFlowCarServicesContainer()
             };
 
