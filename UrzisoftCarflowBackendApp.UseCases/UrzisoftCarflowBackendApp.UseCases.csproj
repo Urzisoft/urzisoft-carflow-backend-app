@@ -34,9 +34,4 @@
     <ProjectReference Include="..\UrzisoftCarflowBackendApp.Entities\UrzisoftCarflowBackendApp.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Prices\QueryHandlers\" />
-    <Folder Include="Prices\Queries\" />
-  </ItemGroup>
-
 </Project>

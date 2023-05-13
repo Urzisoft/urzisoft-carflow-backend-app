@@ -1,5 +1,4 @@
 ﻿using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Context;
-using UrzisoftCarflowBackendApp.DatabaseInfrastructure.Repositories;
 using UrzisoftCarflowBackendApp.UseCases.Interfaces;
 
 namespace UrzisoftCarflowBackendApp.DatabaseInfrastructure
