@@ -57,7 +57,8 @@ namespace UrzisoftCarflowBackendApp.UseCases.Users.CommandsHandlers
                     Username = user.UserName,
                     UserId = user.Id,
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
-                    Expiration = token.ValidTo
+                    Expiration = token.ValidTo,
+                    Roles = userRoles
                 };
             }
 
