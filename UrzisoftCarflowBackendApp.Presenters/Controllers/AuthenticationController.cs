@@ -34,6 +34,21 @@ namespace UrzisoftCarflowBackendApp.Presenters.Controllers
         }
 
         [HttpPost]
+        [Route("admin-register")]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDto registerDto)
+        {
+            var command = new RegisterAdmin
+            {
+                Username = registerDto.Username,
+                Password = registerDto.Password,
+            };
+
+            var result = await _mediator.Send(command);
+
+            return result.Status == "Error" ? StatusCode(StatusCodes.Status500InternalServerError, result) : Ok(result);
+        }
+
+        [HttpPost]
         [Route("login")]
         public async Task<IActionResult> LogIn([FromBody] LoginDto logInDto)
         {

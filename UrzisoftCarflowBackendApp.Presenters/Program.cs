@@ -81,7 +81,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("ActivePolicy", policy =>
-          policy.RequireRole("Active"));
+          policy.RequireRole("Active", "Admin"));
 });
 
 builder.Services.AddMediatR(typeof(IUseCasesAssemblyMarker));
